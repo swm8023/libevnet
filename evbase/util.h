@@ -18,7 +18,6 @@ extern "C" {
 
 /* memory function */
 static inline void *mm_realloc(void *p, int size) {
-    printf("==%d\n", size);
     p = realloc(p, size);
     if (p == NULL && size) {
         log_fatal("memory allocate failed");
@@ -31,15 +30,15 @@ static inline void *mm_realloc(void *p, int size) {
 /* array operation */
 #define multi_two(x) ((x) << 1)
 #define add_one(x)   ((x) + 1)
-#define init_array_zero(array, type, size) \
-    memset((array), 0, sizeof(type)*(size))
+#define init_array_zero(array, type, size_) memset(array, 0, sizeof(type)*(size_))
+#define init_array_noop(array, type, size_)
 #define check_and_expand_array(array, type, size, need, expand, init) do {   \
     if ((need) > (size)) {                                                   \
         int osize_ = (size);                                                 \
         while ((size) < (need))                                              \
             (size) = expand(size);                                           \
-        (array) = (type*)mm_realloc((array), (size)*sizeof(type));           \
-        init_array_zero((array)+osize_, (type), ((size)-osize_));            \
+        (array) = (type*)mm_realloc(array, (size)*sizeof(type));             \
+        init((array)+(osize_), type, (size)-(osize_));                       \
     }                                                                        \
 } while (0)
 

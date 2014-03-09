@@ -89,7 +89,6 @@ void evt_io_start(EL_P loop, struct evt_io* w) {
     FDI_P fdi;
 #ifndef NDEBUG
     int debug_osize = loop->fds_size;
-    int debug_ocsize = loop->fds_mod_size;
 #endif
     /* adjust evnet param */
     w->active = 1;
@@ -101,6 +100,7 @@ void evt_io_start(EL_P loop, struct evt_io* w) {
     /* check if fd event need expand (if need, expand it)*/
     check_and_expand_array(loop->fds, struct fd_info, loop->fds_size,
         w->fd + 1, multi_two, init_array_zero);
+
     fdi = loop->fds + w->fd;
 
 #ifndef NDEBUG
@@ -112,9 +112,11 @@ void evt_io_start(EL_P loop, struct evt_io* w) {
     ((EBL_P)w)->next = fdi->head;
     fdi->head = (EBL_P)w;
 
+
+
 }
 
-void evt_fd_change(EL_P loop) {
+void evt_fd_change(EL_P loop, int fd, uint8_t flags) {
 
 }
 

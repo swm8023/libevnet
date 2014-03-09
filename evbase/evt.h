@@ -79,7 +79,7 @@ struct fd_info {
 };
 
 void evt_fd_changes_update(EL_P);
-void evt_fd_change(EL_P);
+void evt_fd_change(EL_P, int, uint8_t);
 
 #define EVT_READ      0x01
 #define EVT_WRITE     0x02

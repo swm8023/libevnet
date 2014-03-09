@@ -16,16 +16,16 @@ void testdef(){
 }
 int main (int argc, char *argv[]) {
 
-   // testdef();
+    testdef();
     //printf("%s\n", DEFINE_TEST(LOG_LEVEL_T(LOG_INNER)));
     struct evt_io e;
     int i;
     EL_P loop = evt_loop_init();
 
-for (i = 0; i < 67; i++) {
+for (i = 5; i < 1000; i++) {
     evt_io_init(&e, i, EVT_READ, io_cb);
     evt_io_start(loop, &e);
 }
-    evt_loop_run(loop);
+ //   evt_loop_run(loop);
 	return 0;
 }
