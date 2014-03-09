@@ -78,7 +78,7 @@ $(BIN_DIR)/%.o: %.c
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 $(BIN_DIR)/%.o: %.cpp
-	@$(call make-depend,$(patsubst %.o,%.d,$@),$<,$@,$(CXX))
+	@$(call make-depend,$(patsubst %.o,%.d,$@),$<,$@,$(CC))
 	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 # add-target(target,objs,cc)
@@ -90,7 +90,7 @@ define add-target
 endef
 
 # call add-target
-$(foreach targ,$(TARGET_PROG),$(eval $(call add-target,$(targ),$(objs),$(CXX))))
+$(foreach targ,$(TARGET_PROG),$(eval $(call add-target,$(targ),$(objs),$(CC))))
 
 all: $(REAL_TARGET) $(TARGET_LIBS)
 

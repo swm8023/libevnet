@@ -1,5 +1,5 @@
-#ifndef EVUTIL_THREAD_H
-#define EVUTIL_THREAD_H
+#ifndef EVBASE_THREAD_H
+#define EVBASE_THREAD_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -17,4 +17,4 @@ const char* thread_name();
 #ifdef __cplusplus
 }
 #endif
-#endif  //EVUTIL_THREAD_H
+#endif  //EVBASE_THREAD_H

@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 
-#include <evutil/log.h>
+#include <evbase/log.h>
 
 static void log_console_output_cb(const char *, size_t);
 static void log_console_flush_cb();

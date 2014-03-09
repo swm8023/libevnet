@@ -1,9 +1,9 @@
-#ifndef EVUTIL_LOG_H
-#define EVUTIL_LOG_H
+#ifndef EVBASE_LOG_H
+#define EVBASE_LOG_H
 
 #include <stdint.h>
 
-#include <evutil/util.h>
+#include <evbase/util.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -86,4 +86,4 @@ void log_file_close();
 }
 #endif
 
-#endif //EVUTIL_LOG_H
+#endif //EVBASE_LOG_H

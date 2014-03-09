@@ -1,0 +1,149 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+DEFINE_TEST	.\evbase\util.h	15;"	d
+EBL_P	.\evbase\evt.h	/^typedef struct evt_base_list* EBL_P;$/;"	t	typeref:struct:evt_base_list
+EB_P	.\evbase\evt.h	/^typedef struct evt_base* EB_P;$/;"	t	typeref:struct:evt_base
+EEPOLL_P	.\evbase\epoll.h	/^typedef struct evt_epoll* EEPOLL_P;$/;"	t	typeref:struct:evt_epoll
+EL_P	.\evbase\evt.h	/^typedef struct evt_loop* EL_P;$/;"	t	typeref:struct:evt_loop
+EPOLL_INIT_NEVENT	.\evbase\epoll.h	10;"	d
+EPOLL_MAX_NEVENT	.\evbase\epoll.h	11;"	d
+EP_EVT	.\evbase\epoll.h	/^typedef struct epoll_event EP_EVT;$/;"	t	typeref:struct:epoll_event
+EVBASE_EPOLL_H	.\evbase\epoll.h	2;"	d
+EVBASE_EVT_H	.\evbase\evt.h	2;"	d
+EVBASE_LOG_H	.\evbase\log.h	2;"	d
+EVBASE_THREAD_H	.\evbase\thread.h	2;"	d
+EVBASE_UTIL_H	.\evbase\util.h	2;"	d
+EVT_BASE	.\evbase\evt.h	18;"	d
+EVT_BASE_LIST	.\evbase\evt.h	25;"	d
+EVT_CALLBACK	.\evbase\evt.h	15;"	d
+EVT_READ	.\evbase\evt.h	84;"	d
+EVT_WRITE	.\evbase\evt.h	85;"	d
+FDI_P	.\evbase\evt.h	/^typedef struct fd_info* FDI_P;$/;"	t	typeref:struct:fd_info
+LOG_BUFSIZE	.\evbase\log.h	30;"	d
+LOG_DEBUG	.\evbase\log.h	14;"	d
+LOG_DEBUG_INDEX	.\evbase\log.h	22;"	d
+LOG_ERROR	.\evbase\log.h	16;"	d
+LOG_ERROR_INDEX	.\evbase\log.h	24;"	d
+LOG_FATAL	.\evbase\log.h	17;"	d
+LOG_FATAL_INDEX	.\evbase\log.h	25;"	d
+LOG_INNER	.\evbase\log.h	12;"	d
+LOG_INNER_INDEX	.\evbase\log.h	20;"	d
+LOG_LEVELS	.\evbase\log.h	26;"	d
+LOG_MASK	.\evbase\log.h	18;"	d
+LOG_TRACE	.\evbase\log.h	13;"	d
+LOG_TRACE_INDEX	.\evbase\log.h	21;"	d
+LOG_WARN	.\evbase\log.h	15;"	d
+LOG_WARN_INDEX	.\evbase\log.h	23;"	d
+LOOP_INIT_FDS	.\evbase\evt.h	96;"	d
+LOOP_INIT_PENDSIZE	.\evbase\evt.h	97;"	d
+LOOP_INIT_POLLUS	.\evbase\evt.h	99;"	d
+LOOP_PRIORITY_MAX	.\evbase\evt.h	98;"	d
+LOOP_STATU_INIT	.\evbase\evt.h	89;"	d
+LOOP_STATU_PAUSE	.\evbase\evt.h	92;"	d
+LOOP_STATU_QUITING	.\evbase\evt.h	93;"	d
+LOOP_STATU_RUNNING	.\evbase\evt.h	91;"	d
+LOOP_STATU_STARTED	.\evbase\evt.h	90;"	d
+LOOP_STATU_STOP	.\evbase\evt.h	94;"	d
+STRING	.\evbase\util.h	14;"	d
+cr_thread_id	.\evbase\thread.c	/^__thread int cr_thread_id = 0;$/;"	v
+cr_thread_name	.\evbase\thread.c	/^__thread const char* cr_thread_name = "unknow";$/;"	v
+default_log_if	.\evbase\log.c	/^struct log_if *default_log_if = &default_log_if_s;$/;"	v	typeref:struct:log_if
+default_log_if_s	.\evbase\log.c	/^static struct log_if default_log_if_s = {$/;"	v	typeref:struct:log_if	file:
+epoll_destroy	.\evbase\epoll.c	/^void epoll_destroy(EL_P loop) {$/;"	f
+epoll_dispatch	.\evbase\epoll.c	/^int epoll_dispatch(EL_P loop) {$/;"	f
+epoll_init	.\evbase\epoll.c	/^void *epoll_init(EL_P loop) {$/;"	f
+epoll_update	.\evbase\epoll.c	/^int epoll_update(EL_P loop, int fd) {$/;"	f
+event	.\evbase\epoll.h	/^    struct epoll_event *event;$/;"	m	struct:evt_epoll	typeref:struct:evt_epoll::epoll_event
+event	.\evbase\evt.h	/^    uint8_t event;$/;"	m	struct:evt_io
+evt_append_pending	.\evbase\evt.c	/^void evt_append_pending(EL_P loop, void *w, uint8_t event) {$/;"	f
+evt_base	.\evbase\evt.h	/^struct evt_base {$/;"	s
+evt_base_init	.\evbase\evt.h	53;"	d
+evt_base_list	.\evbase\evt.h	/^struct evt_base_list {$/;"	s
+evt_epoll	.\evbase\epoll.h	/^struct evt_epoll {$/;"	s
+evt_execute_pending	.\evbase\evt.c	/^void evt_execute_pending(EL_P loop) {$/;"	f
+evt_fd_changes_update	.\evbase\evt.c	/^void evt_fd_changes_update(EL_P loop) {$/;"	f
+evt_io	.\evbase\evt.h	/^struct evt_io{$/;"	s
+evt_io_init	.\evbase\evt.h	62;"	d
+evt_io_start	.\evbase\evt.c	/^void evt_io_start(EL_P loop, struct evt_io* w) {$/;"	f
+evt_loop	.\evbase\evt.h	/^struct evt_loop {$/;"	s
+evt_loop_destroy	.\evbase\evt.c	/^int evt_loop_destroy(EL_P loop) {$/;"	f
+evt_loop_init	.\evbase\evt.c	/^EL_P evt_loop_init() {$/;"	f
+evt_loop_init_with_flag	.\evbase\evt.c	/^EL_P evt_loop_init_with_flag(int flag) {$/;"	f
+evt_loop_quit	.\evbase\evt.c	/^int evt_loop_quit(EL_P loop) {$/;"	f
+evt_loop_run	.\evbase\evt.c	/^int evt_loop_run(EL_P loop) {$/;"	f
+evt_timer	.\evbase\evt.h	/^struct evt_timer{$/;"	s
+fd	.\evbase\epoll.h	/^    int fd;$/;"	m	struct:evt_epoll
+fd	.\evbase\evt.h	/^    int fd;$/;"	m	struct:evt_io
+fd	.\evbase\evt.h	/^    int fd;$/;"	m	struct:fd_info
+fd_cloexec	.\evbase\util.h	30;"	d
+fd_info	.\evbase\evt.h	/^struct fd_info {$/;"	s
+fd_nonblock	.\evbase\util.h	31;"	d
+fds	.\evbase\evt.h	/^    FDI_P fds;$/;"	m	struct:evt_loop
+fds_mod	.\evbase\evt.h	/^    int *fds_mod;$/;"	m	struct:evt_loop
+fds_mod_size	.\evbase\evt.h	/^    int fds_mod_size;$/;"	m	struct:evt_loop
+fds_size	.\evbase\evt.h	/^    int fds_size;$/;"	m	struct:evt_loop
+feature	.\evbase\epoll.h	/^    int feature;$/;"	m	struct:evt_epoll
+flush_cb	.\evbase\log.h	/^    void (*flush_cb)();$/;"	m	struct:log_if
+get_default_logif_level_flag	.\evbase\log.h	63;"	d
+get_logif_level_flag	.\evbase\log.h	45;"	d
+head	.\evbase\evt.h	/^    EBL_P head;$/;"	m	struct:fd_info
+level_cb	.\evbase\log.h	/^    void (*level_cb[LOG_LEVELS])();$/;"	m	struct:log_if
+level_flag	.\evbase\log.h	/^    uint8_t level_flag;$/;"	m	struct:log_if
+log_append	.\evbase\log.c	/^void log_append(struct log_if *logif, uint8_t level_index, const char *fmt, ...) {$/;"	f
+log_console_fatal_cb	.\evbase\log.c	/^static void log_console_fatal_cb() {$/;"	f	file:
+log_console_flush_cb	.\evbase\log.c	/^static void log_console_flush_cb() {$/;"	f	file:
+log_console_output_cb	.\evbase\log.c	/^static void log_console_output_cb(const char *str, size_t size) {$/;"	f	file:
+log_debug	.\evbase\log.h	71;"	d
+log_error	.\evbase\log.h	73;"	d
+log_fatal	.\evbase\log.h	74;"	d
+log_if	.\evbase\log.h	/^struct log_if {$/;"	s
+log_inner	.\evbase\log.h	69;"	d
+log_level_append	.\evbase\log.h	40;"	d
+log_level_name	.\evbase\log.c	/^static const char* log_level_name[LOG_LEVELS] = {$/;"	v	file:
+log_trace	.\evbase\log.h	70;"	d
+log_warn	.\evbase\log.h	72;"	d
+logu_debug	.\evbase\log.h	53;"	d
+logu_error	.\evbase\log.h	55;"	d
+logu_fatal	.\evbase\log.h	56;"	d
+logu_inner	.\evbase\log.h	51;"	d
+logu_trace	.\evbase\log.h	52;"	d
+logu_warn	.\evbase\log.h	54;"	d
+main	.\main.c	/^int main (int argc, char *argv[]) {$/;"	f
+mm_free	.\evbase\util.h	27;"	d
+mm_malloc	.\evbase\util.h	26;"	d
+mm_realloc	.\evbase\util.h	/^static inline void *mm_realloc(void *p, int size) {$/;"	f
+nevent	.\evbase\epoll.h	/^    int nevent;$/;"	m	struct:evt_epoll
+nevt	.\evbase\evt.h	/^    uint8_t nevt;$/;"	m	struct:fd_info
+oevt	.\evbase\evt.h	/^    uint8_t oevt;$/;"	m	struct:fd_info
+output_cb	.\evbase\log.h	/^    void (*output_cb)(const char*, size_t);$/;"	m	struct:log_if
+owner_thread	.\evbase\evt.h	/^    int owner_thread;$/;"	m	struct:evt_loop
+pending	.\evbase\evt.h	/^    EB_P pending[LOOP_PRIORITY_MAX];$/;"	m	struct:evt_loop
+pendingcnt	.\evbase\evt.h	/^    int pendingcnt[LOOP_PRIORITY_MAX];$/;"	m	struct:evt_loop
+pendingsize	.\evbase\evt.h	/^    int pendingsize[LOOP_PRIORITY_MAX];$/;"	m	struct:evt_loop
+poll_destroy	.\evbase\evt.h	/^    void (*poll_destroy)(EL_P);$/;"	m	struct:evt_loop
+poll_dispatch	.\evbase\evt.h	/^    int (*poll_dispatch)(EL_P);$/;"	m	struct:evt_loop
+poll_feature	.\evbase\evt.h	/^    int poll_feature;$/;"	m	struct:evt_loop
+poll_init	.\evbase\evt.h	/^    void *(*poll_init)(EL_P);$/;"	m	struct:evt_loop
+poll_more_ptr	.\evbase\evt.h	/^    void *poll_more_ptr;$/;"	m	struct:evt_loop
+poll_time_us	.\evbase\evt.h	/^    int64_t poll_time_us;      \/*in microsecond*\/$/;"	m	struct:evt_loop
+poll_update	.\evbase\evt.h	/^    int (*poll_update)(EL_P, int);$/;"	m	struct:evt_loop
+priority_max	.\evbase\evt.h	/^    uint8_t priority_max;   \/* 0 ~ max*\/$/;"	m	struct:evt_loop
+revt	.\evbase\evt.h	/^    uint8_t revt;$/;"	m	struct:fd_info
+set_default_logif_flush_cb	.\evbase\log.h	66;"	d
+set_default_logif_level	.\evbase\log.h	62;"	d
+set_default_logif_level_cb	.\evbase\log.h	67;"	d
+set_default_logif_level_flag	.\evbase\log.h	64;"	d
+set_default_logif_output_cb	.\evbase\log.h	65;"	d
+set_logif_flush_cb	.\evbase\log.h	48;"	d
+set_logif_level	.\evbase\log.h	44;"	d
+set_logif_level_cb	.\evbase\log.h	49;"	d
+set_logif_level_flag	.\evbase\log.h	46;"	d
+set_logif_output_cb	.\evbase\log.h	47;"	d
+status	.\evbase\evt.h	/^    uint8_t status;$/;"	m	struct:evt_loop
+thread_id	.\evbase\thread.c	/^int thread_id() {$/;"	f
+thread_name	.\evbase\thread.c	/^const char* thread_name() {$/;"	f
+timestamp	.\evbase\evt.h	/^    int64_t timestamp;$/;"	m	struct:evt_timer
