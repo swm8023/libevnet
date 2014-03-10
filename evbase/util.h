@@ -12,9 +12,14 @@ extern "C" {
 #include <evbase/log.h>
 
 /* debug */
+#ifndef NDEBUG
+
 #define STRING(x) #x
 #define DEFINE_TEST(x) STRING(x)
-
+#else
+#define STRING(x)
+#define DEFINE_TEST(x)
+#endif
 
 /* memory function */
 static inline void *mm_realloc(void *p, int size) {
@@ -42,9 +47,20 @@ static inline void *mm_realloc(void *p, int size) {
     }                                                                        \
 } while (0)
 
+/* compare */
+#define min(a, b) ((a) < (b) ? (a) : (b))
+#define max(a, b) ((a) < (b) ? (b) : (a))
+#define adjust_between(x, left, right) do {     \
+    if ((x) < (left))  (x) = (left);            \
+    if ((x) > (right)) (x) = (right);           \
+} while (0)
+
 /* fd operation */
 #define fd_cloexec(fd)
 #define fd_nonblock(fd)
+
+/* min head */
+
 
 #ifdef __cplusplus
 }

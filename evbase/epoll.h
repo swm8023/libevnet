@@ -5,6 +5,8 @@
 extern "C" {
 #endif
 
+#include <stdint.h>
+
 #include <evbase/evt.h>
 
 #define EPOLL_INIT_NEVENT   32
@@ -23,7 +25,7 @@ struct evt_epoll {
 void *epoll_init(EL_P);
 void epoll_destroy(EL_P);
 int epoll_dispatch(EL_P);
-int epoll_update(EL_P, int);
+int epoll_update(EL_P, int, uint8_t, uint8_t);
 
 
 #ifdef __cplusplus
