@@ -16,9 +16,9 @@ typedef struct evt_loop* EL_P;
     void (*cb)(struct evt_loop*, struct type*)
 
 #define EVT_BASE(type)  \
-    int active;         \
+    uint8_t active;     \
+    uint8_t priority;   \
     int pendpos;        \
-    int priority;       \
     void *data;         \
     EVT_CALLBACK(type);
 
@@ -47,6 +47,8 @@ struct evt_io{
 struct evt_timer{
     EVT_BASE(evt_timer);
 
+    int heap_ind;
+    int64_t repeat;
     int64_t timestamp;
 };
 
@@ -67,17 +69,25 @@ struct evt_after {
 } while (0)
 
 
-#define evt_io_init(ev_, fd_, event_, cb_) do { \
+#define evt_io_init(ev_, cb_, fd_, event_) do { \
     evt_base_init((ev_), (cb_));                \
     (ev_)->event = (event_);                    \
     (ev_)->fd = (fd_);                          \
 } while (0)
+
+#define evt_timer_init(ev_, cb_, after_, repeat_) do { \
+    evt_base_init((ev_), (cb_));                       \
+    (ev_)->repeat = (repeat_);                         \
+    (ev_)->timestamp = (after_);                       \
+}
 
 #define evt_before_init(ev_, cb_) evt_base_init((ev_), (cb_))
 #define evt_after_init(ev_, cb_)  evt_base_init((ev_), (cb_))
 
 void evt_io_start(EL_P, struct evt_io*);
 void evt_io_stop(EL_P, struct evt_io*);
+void evt_timer_start(EL_P, struct evt_timer*);
+void evt_timer_stop(EL_P, struct evt_timer*);
 void evt_before_start(EL_P, struct evt_before*);
 void evt_before_stop(EL_P, struct evt_before*);
 void evt_after_start(EL_P, struct evt_after*);
@@ -101,6 +111,7 @@ void evt_fd_change(EL_P, int);
 #define EVT_WRITE     0x02
 
 #define FD_FLAG_CHANGE    0x01
+
 
 
 /* evt_loop */
@@ -137,6 +148,9 @@ struct evt_loop {
     EBL_P evt_afters_head;
 
     /* timer event */
+    struct evt_timer* timer_heap;
+    int timer_heap_cnt;
+    int timer_heap_size;
 
     /* event pending to run */
     EB_P *pending[LOOP_PRIORITY_MAX];
@@ -154,8 +168,8 @@ struct evt_loop {
 
     /* some default callback */
     struct evt_before *empty_ev;   /* be used when stop a pending event */
-
 };
+
 
 EL_P evt_loop_init_with_flag(int);
 EL_P evt_loop_init();

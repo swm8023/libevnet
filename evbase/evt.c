@@ -33,6 +33,12 @@ EL_P evt_loop_init_with_flag(int flag) {
     loop->evt_befores_head = NULL;
     loop->evt_afters_head = NULL;
 
+    /* timer event */
+    loop->timer_heap_size = LOOP_INIT_EVTSIZE;
+    loop->timer_heap_cnt = 0;    /* start from 1 */
+    loop->timer_heap = (struct evt_timer*)
+        mm_malloc(sizeof(struct evt_timer*) * LOOP_INIT_EVTSIZE);
+
     /* init backend */
     if (0) {
         /* only supprot epoll in first version*/
@@ -130,6 +136,7 @@ void evt_execute_pending(EL_P loop) {
     }
 }
 
+
 /* io event && fd operation*/
 void evt_io_start(EL_P loop, struct evt_io* w) {
     FDI_P fdi;
@@ -211,6 +218,18 @@ void evt_fd_changes_update(EL_P loop) {
     loop->fds_mod_cnt = 0;
 }
 
+/* timer event */
+void evt_timer_start(EL_P loop, struct evt_timer* ev) {
+    /* adjust event param */
+    ev->active = 1;
+    adjust_between(ev->priority, 0, loop->priority_max);
+
+}
+
+void evt_timer_stop(EL_P loop, struct evt_timer* ev) {
+
+}
+
 /* before event && after event */
 void evt_before_start(EL_P loop, struct evt_before* ev) {
     /* adjust event param */
@@ -276,3 +295,4 @@ static void evt_list_del(EBL_P* head, EBL_P elm) {
         head = &(*head)->next;
     }
 }
+

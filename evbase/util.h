@@ -6,6 +6,7 @@ extern "C" {
 #endif
 
 #include <unistd.h>
+#include <stdint.h>
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -13,7 +14,6 @@ extern "C" {
 
 /* debug */
 #ifndef NDEBUG
-
 #define STRING(x) #x
 #define DEFINE_TEST(x) STRING(x)
 #else
@@ -55,11 +55,85 @@ static inline void *mm_realloc(void *p, int size) {
     if ((x) > (right)) (x) = (right);           \
 } while (0)
 
+/* bit operation */
+#define RSHIFT(x) ((x) >> 1)
+#define LSHIFT(x) ((x) << 1)
+#define LCHILD(x) LSHIFT(x)
+#define RCHILD(x) (LSHIFT(x)|1)
+
+
 /* fd operation */
 #define fd_cloexec(fd)
 #define fd_nonblock(fd)
 
-/* min head */
+/* min heap (root=1)*/
+#define HEAP_FIX_UP(heap, type, pos, size, comp) do {      \
+    int pos_ = (pos);                                      \
+    type val_ =  (heap)[pos_];                             \
+    while (pos_ > 1 && comp(val_, (heap)[RSHIFT(pos_)])) { \
+        (heap)[pos_] = (heap)[RSHIFT(pos_)];               \
+        pos_ = RSHIFT(pos_);                               \
+    }                                                      \
+    (heap)[pos_] = val_;                                   \
+} while (0)
+
+#define HEAP_FIX_DOWN(heap, type, pos, size, comp) do {    \
+    int pos_ = (pos);                                      \
+    type val_ = (heap)[pos_];                              \
+    while (LCHILD(pos_) <= (size)) {                       \
+        int npos_ = LCHILD(pos_);                          \
+        npos_ += (RCHILD(pos_) <= (size) &&                \
+            comp((heap)[npos_+1], (heap)[npos_]) ? 1 : 0); \
+        if (comp(val_, (heap)[npos_]))                     \
+            break;                                         \
+        (heap)[pos_] = (heap)[npos_];                      \
+        pos_ = npos_;                                      \
+    }                                                      \
+    (heap)[pos_] = val_;                                   \
+} while (0)
+
+#define HEAP_INIT(heap, type, size, comp) do {             \
+    int ind_ = (size) / 2 + 1;                             \
+    while (--ind_)                                         \
+        HEAP_FIX_DOWN(heap, type, ind_, size, comp);       \
+} while (0)
+
+#define HEAP_SORT(heap, type, size, comp) do {             \
+    int size_ = (size);                                    \
+    while (size_ > 0) {                                    \
+        type tmp_ = (heap)[1];                             \
+        (heap)[1] = (heap[size_]);                         \
+        (heap)[size_--] = tmp_;                            \
+        HEAP_FIX_DOWN(heap, type, 1, size_, comp);         \
+    }                                                      \
+} while (0)
+
+#define HEAP_DELETE(heap, type, pos, size, comp) do {      \
+    (heap)[pos] = (heap)[(size)--];                        \
+    if (pos > 1 && comp((heap)[pos], (heap)[RSHIFT(pos)])){\
+        HEAP_FIX_UP(heap, type, pos, size, comp);          \
+    } else {                                               \
+        HEAP_FIX_DOWN(heap, type, pos, size, comp);        \
+    }                                                      \
+} while (0)
+
+#define HEAP_PUSH(heap, type, size, elm, comp) do {        \
+    (heap)[++(size)] = (elm);                              \
+    HEAP_FIX_UP(heap, type, size, size, comp);             \
+} while (0)
+
+#define HEAP_POP(heap, type, size, comp)                   \
+    HEAP_DELETE(heap, type, 1, size, comp)
+
+
+/* time */
+#define MICOR_SECOND 1000000
+extern __thread int64_t cached_time;
+#define CACHED_TIME cached_time
+int64_t get_cached_time();
+int64_t update_cached_time();
+void now_to_string(char*, int);
+void time_to_string(int64_t, char*,int);
 
 
 #ifdef __cplusplus

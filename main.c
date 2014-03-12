@@ -34,11 +34,18 @@ void testdef(){
         loop->fds_size, w->fd + 1, multi_two, init_array_zero)));
 
 }
+
+
+
 int main (int argc, char *argv[]) {
 
-    //testdef();
-    //printf("%s\n", DEFINE_TEST(LOG_LEVEL_T(LOG_INNER)));
+    printf("%lld\n", get_cached_time());
+    printf("%lld\n", CACHED_TIME);
 
+    char buf[30];
+    now_to_string(buf, 30);
+    printf("%s\n", buf);
+/*
 
     int i;
     EL_P loop = evt_loop_init();
@@ -57,5 +64,6 @@ int main (int argc, char *argv[]) {
     evt_after_start(loop, &ea2);
 
     evt_loop_run(loop);
+*/
 	return 0;
 }
