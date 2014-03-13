@@ -14,7 +14,8 @@ BUF_P buff_new() {
 }
 
 void buff_free(BUF_P buf) {
-    mm_free(buf->buf);
+    if (buf)
+        mm_free(buf->buf);
     mm_free(buf);
 }
 

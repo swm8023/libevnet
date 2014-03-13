@@ -71,6 +71,7 @@ static inline void mm_free(void *p) {
 /* fd operation */
 #define fd_cloexec(fd)
 #define fd_nonblock(fd)
+#define fd_reuse(fd)
 
 /* min heap (root=1)*/
 #define HEAP_UPDATE_POS(heap, pos_, npos_) \

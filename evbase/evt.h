@@ -60,6 +60,8 @@ struct evt_after {
     EVT_BASE_LIST(evt_after);
 };
 
+#define evt_set_data(ev_, data_) ((ev_)->data = (data_))
+
 #define evt_base_init(ev_, cb_) do {    \
     (ev_)->active   = 0;                \
     (ev_)->priority = 0;                \
