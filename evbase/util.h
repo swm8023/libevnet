@@ -68,11 +68,6 @@ static inline void mm_free(void *p) {
 #define RCHILD(x) (LSHIFT(x)|1)
 
 
-/* fd operation */
-#define fd_cloexec(fd)
-#define fd_nonblock(fd)
-#define fd_reuse(fd)
-
 /* min heap (root=1)*/
 #define HEAP_UPDATE_POS(heap, pos_, npos_) \
     ((heap)[pos_]->heap_pos = (npos_))
@@ -145,7 +140,13 @@ static inline void mm_free(void *p) {
     HEAP_DELETE(heap, type, 1, size, comp)
 
 
-/* time */
+/* fd operation */
+int fd_cloexec(int);
+int fd_nonblock(int);
+int fd_reuse(int);
+
+
+/* time operation */
 #define MICOR_SECOND 1000000
 #define SECOND(x) ((x) * 1000000)
 extern __thread int64_t cached_time;

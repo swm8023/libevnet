@@ -8,7 +8,7 @@
 
 BUF_P buff_new() {
     BUF_P buf;
-    buf = (char*)mm_malloc(sizeof(BUF));
+    buf = (BUF_P)mm_malloc(sizeof(BUF));
     buff_init(buf);
     return buf;
 }

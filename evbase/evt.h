@@ -101,7 +101,7 @@ void evt_after_stop(EL_P, struct evt_after*);
 typedef struct fd_info* FDI_P;
 struct fd_info {
     EBL_P head;
-    int fd;
+    //int fd;
     uint8_t events;
     uint8_t revents;   /* event return by poll*/
     uint8_t flag;

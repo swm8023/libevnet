@@ -133,7 +133,7 @@ int epoll_update(EL_P loop, int fd, uint8_t oev, uint8_t nev) {
 
     /* already focused, just MOD it */
     } else {
-        log_inner("epoll_update do EPOLL_CTL_ADD with fd: %d", fd);
+        log_inner("epoll_update do EPOLL_CTL_MOD with fd: %d", fd);
         if (epoll_ctl(ept->fd, EPOLL_CTL_MOD, fd, &evt)) {
             if (errno == ENOENT &&
                 epoll_ctl(ept->fd, EPOLL_CTL_ADD, fd, &evt)) {

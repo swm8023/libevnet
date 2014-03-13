@@ -18,10 +18,13 @@ typedef struct tcp_srv* TCPSRV_P;
 typedef struct tcp_clt* TCPCLT_P;
 
 #define TCP_DEFAULT_FLAG   0x00
+
 #define TCP_SERVER_BREATH  0x01
 #define TCP_SERVER_LOOPS   0x02
 #define TCP_SERVER_NOREUSE 0x04
 #define TCP_SERVER_ACBLOCK 0x08
+
+#define TCP_CLIENT_WAITCLS 0x01
 
 
 /* tcp server */
@@ -39,11 +42,20 @@ struct tcp_srv {
     int loops;
 
     struct evt_io* srv_io;
-    void (*on_accept_comp)(TCPSRV_P, TCPCLT_P);
-    void (*on_read_comp)();
-    void (*on_write_comp)();
+    void (*on_accept_comp)(TCPCLT_P);
+    void (*on_read_comp)(TCPCLT_P, BUF_P, int);
+    void (*on_write_comp)(TCPCLT_P, BUF_P, int);
+    //void (*on_close_comp)(TCPCLT_P);
     EL_P (*get_next_loop)(TCPSRV_P);
 };
+
+#define TCP_SET_ACCEPT_COMP_CB(server, cb) \
+    (server)->on_accept_comp = (cb)
+#define TCP_SET_READ_COMP_CB(server, cb) \
+    (server)->on_read_comp = (cb)
+#define TCP_SET_WRITE_COMP_CB(server, cb) \
+    (server)->on_write_comp = (cb)
+
 
 /* init and destroy */
 TCPSRV_P tcp_server_init(int, int);
@@ -67,6 +79,8 @@ struct tcp_clt {
     BUF_P inbuf;
     BUF_P outbuf;
 };
+
+int tcp_send(TCPCLT_P, const char*, int);
 
 #ifdef __cplusplus
 }

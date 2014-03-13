@@ -47,10 +47,28 @@ void timer_cb3(EL_P loop, struct evt_timer *e) {
     log_trace("timer event3 happen...... %d", e->repeat);
     evt_timer_stop(loop, &et2);
 }
+
+void on_accept_comp(TCPCLT_P client) {
+    log_debug("Accept a connect fd:%d", client->fd);
+}
+void on_read_comp(TCPCLT_P client, BUF_P buf, int len) {
+    log_debug("%d read len %d", client->fd, len);
+    char str[1000];
+    int lens = buff_readall(buf, str, 1000);
+    tcp_send(client, str, lens);
+}
+void on_write_comp(TCPCLT_P client, BUF_P buf , int len) {
+    log_debug("%d write len %d", client->fd, len);
+}
+
 int main (int argc, char *argv[]) {
 
+    ignore_sigpipe()
     EL_P loop = evt_loop_init();
     TCPSRV_P server = tcp_server_init(8887, TCP_DEFAULT_FLAG);
+    TCP_SET_ACCEPT_COMP_CB(server, on_accept_comp);
+    TCP_SET_READ_COMP_CB(server, on_read_comp);
+    TCP_SET_WRITE_COMP_CB(server, on_write_comp);
 
     tcp_server_bind_loop(server, loop);
 

@@ -11,6 +11,7 @@
 static void tcp_server_accpet(EL_P, struct evt_io*);
 static void tcp_client_read(EL_P, struct evt_io*);
 static void tcp_client_write(EL_P, struct evt_io*);
+static void tcp_client_close(TCPCLT_P client);
 
 /* init tcp server with port number */
 TCPSRV_P tcp_server_init(int port, int flag) {
@@ -148,7 +149,7 @@ static void tcp_server_accpet(EL_P loop, struct evt_io* ev) {
         log_inner("accept new client(%d)", client_fd);
     }
     /* socket option */
-    fd_nonblock(fd);
+    fd_nonblock(client_fd);
 
     /* new client and init */
     client = (TCPCLT_P)mm_malloc(sizeof(struct tcp_clt));
@@ -180,15 +181,17 @@ static void tcp_server_accpet(EL_P loop, struct evt_io* ev) {
     client->inbuf = buff_new();
     client->outbuf = buff_new();
 
+
+
     /* callback */
     if (server->on_accept_comp) {
-        server->on_accept_comp(server, client);
+        server->on_accept_comp(client);
     }
     return;
 }
 
 static void tcp_client_read(EL_P loop, struct evt_io* ev) {
-    TCPCLT_P client = (TCPCLT_P)client->data;
+    TCPCLT_P client = (TCPCLT_P)ev->data;
     TCPSRV_P server = (TCPSRV_P)client->relate_srv;
 
     int len = buff_fd_read(client->inbuf, client->fd);
@@ -198,17 +201,117 @@ static void tcp_client_read(EL_P loop, struct evt_io* ev) {
         /* check if there is any data in send buffer, if so,
            set client flag to make it close after all data sent
         */
-        log_trace("fd(%d) read EOF", client->fd);
-        if (BUFFER_USED(client->outbuf) == 0) {
-            
+        log_inner("fd(%d) read EOF", client->fd);
+        if (BUFF_USED(client->outbuf) == 0) {
+            evt_io_stop(client->loop_on, client->clt_io[0]);/*read */
+            evt_io_stop(client->loop_on, client->clt_io[1]);/*write*/
+            tcp_client_close(client);
+        } else {
+            evt_io_stop(client->loop_on, client->clt_io[0]);/*read */
+            evt_io_start(client->loop_on, client->clt_io[1]);/*write*/
+            shutdown(client->fd, SHUT_RD);
+            client->flag |= TCP_CLIENT_WAITCLS;
+        }
+    /* read ERROR */
+    } else if (len < 0) {
+        if (errno != EAGAIN && errno != EWOULDBLOCK && errno != EINTR) {
+            log_inner("fd(%d) read ERROR", client->fd);
+            evt_io_stop(client->loop_on, client->clt_io[0]);/*read */
+            evt_io_stop(client->loop_on, client->clt_io[1]);/*write*/
+            tcp_client_close(client);
+        }
+    /* right, CALLBACK */
+    } else {
+        if (server->on_read_comp) {
+            server->on_read_comp(client, client->inbuf, len);
         }
     }
 }
 
 static void tcp_client_write(EL_P loop, struct evt_io* ev) {
+    TCPCLT_P client = (TCPCLT_P)ev->data;
+    TCPSRV_P server = (TCPSRV_P)client->relate_srv;
 
+    int len = buff_fd_write(client->outbuf, client->fd);
+    /* write ERROR */
+    if (len < 0) {
+        if (errno != EAGAIN && errno != EWOULDBLOCK && errno != EINTR) {
+            log_inner("fd(%d) write ERROR", client->fd);
+            evt_io_stop(client->loop_on, client->clt_io[0]);/*read */
+            evt_io_stop(client->loop_on, client->clt_io[1]);/*write*/
+            tcp_client_close(client);
+        }
+    /* CALLBACK */
+    } else {
+        if (server->on_write_comp) {
+            server->on_write_comp(client, client->outbuf, len);
+        }
+        if (BUFF_USED(client->outbuf) == 0) {
+            evt_io_stop(client->loop_on, client->clt_io[1]);/*write*/
+            if (client->flag & TCP_CLIENT_WAITCLS) {
+                evt_io_stop(client->loop_on, client->clt_io[0]);/*read*/
+                tcp_client_close(client);
+            }
+        }
+    }
 }
 
 static void tcp_client_close(TCPCLT_P client) {
+    TCPSRV_P server = (TCPSRV_P)client->relate_srv;
+    log_inner("server fd:%d, close fd:%d.",
+        server->fd, client->fd);
+    if (client->fd != -1) {
+        close(client->fd);
+    }
 
+    if (client) {
+        buff_free(client->inbuf);
+        buff_free(client->outbuf);
+    }
+    evt_io_stop(client->loop_on, client->clt_io[0]);/*read */
+    evt_io_stop(client->loop_on, client->clt_io[1]);/*write*/
+    mm_free(client->clt_io[0]);
+    mm_free(client->clt_io[1]);
+    mm_free(client);
+
+    /* CALLBACK */
+    // if (server->tcp_client_close) {
+    //     //use time now, not revent time
+    //     server->
+    // }
+}
+
+int tcp_send(TCPCLT_P client, const char* str, int size) {
+    TCPSRV_P server = (TCPSRV_P)client->relate_srv;
+    if (client == NULL) {
+        log_warn("send to a NULL client");
+        return -1;
+    }
+    /* try directly send first if no data in the send buffer */
+    if (0/*BUFF_USED(client->outbuf) == 0*/) {
+        int len = write(client->fd, str, size);
+        if (len == -1) {
+            /* error but can't release resources here, because
+               user may use client again in his function
+            */
+            if (errno != EAGAIN && errno != EWOULDBLOCK && errno != EINTR) {
+                log_warn("fd(%d) write ERROR", client->fd);
+                return -1;
+            } else {
+                buff_write(client->outbuf, str, size);
+                evt_io_start(client->loop_on, client->clt_io[1]);/*write*/
+            }
+        } else if (len < size) {
+            buff_write(client->outbuf, str+len, size-len);
+            evt_io_start(client->loop_on, client->clt_io[1]);/*write*/
+        }
+        /* CALLBACK */
+        if (len > 0 && server->on_write_comp) {
+            server->on_write_comp(client, client->outbuf, len);
+        }
+    } else {
+        buff_write(client->outbuf, str, size);
+        evt_io_start(client->loop_on, client->clt_io[1]);/*write*/
+    }
+    return 0;
 }

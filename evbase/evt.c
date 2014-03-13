@@ -174,6 +174,7 @@ void evt_io_start(EL_P loop, struct evt_io* w) {
     int debug_osize = loop->fds_size;
 #endif
     /* adjust event param */
+    if (w->active == 1) return;
     w->active = 1;
     adjust_between(w->priority, 0, loop->priority_max);
 
@@ -252,6 +253,7 @@ void evt_fd_changes_update(EL_P loop) {
 /* timer event */
 void evt_timer_start(EL_P loop, struct evt_timer* ev) {
     /* adjust event param */
+    if (ev->active == 1) return;
     ev->active = 1;
     adjust_between(ev->priority, 0, loop->priority_max);
 
@@ -285,6 +287,7 @@ void evt_timer_stop(EL_P loop, struct evt_timer* ev) {
 /* before event && after event */
 void evt_before_start(EL_P loop, struct evt_before* ev) {
     /* adjust event param */
+    if (ev->active == 1) return;
     ev->active = 1;
     adjust_between(ev->priority, 0, loop->priority_max);
 
@@ -307,6 +310,7 @@ void evt_before_stop(EL_P loop, struct evt_before* ev) {
 
 void evt_after_start(EL_P loop, struct evt_after* ev) {
     /* adjust event param */
+    if (ev->active == 1) return;
     ev->active = 1;
     adjust_between(ev->priority, 0, loop->priority_max);
 
