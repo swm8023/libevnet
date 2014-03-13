@@ -3,7 +3,7 @@
 #include <evbase/thread.h>
 
 
-//current thread
+/* current thread */
 __thread int cr_thread_id = 0;
 __thread const char* cr_thread_name = "unknow";
 

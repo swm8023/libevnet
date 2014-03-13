@@ -61,7 +61,7 @@ int epoll_dispatch(EL_P loop) {
     int i, j;
     EEPOLL_P ept = (EEPOLL_P)loop->poll_more_ptr;
 
-    /* cal wait time */
+    /* cal wait time (alredy cal in evt.c, here just convert us to ms)*/
     int wait_ms = loop->poll_time_us;
     if (wait_ms > 0) wait_ms /= 1000;
 

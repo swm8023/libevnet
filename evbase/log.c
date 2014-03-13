@@ -35,15 +35,12 @@ struct log_if *default_log_if = &default_log_if_s;
 
 
 void log_append(struct log_if *logif, uint8_t level_index, const char *fmt, ...) {
-    char buf[LOG_BUFSIZE + 1];
+    char buf[LOG_BUFSIZE + 1], timebuf[30];
     size_t buflen = 0;
 
-    //char time_buf[30];
-    //now_formated_string(time_buf, sizeof(time_buf));
-
-    //buflen = snprintf(buf, LOG_BUFSIZE, "%s%5d %s ", log_level_name[l], get_cr_thread_id(), 
-    //    time_buf);
-    buflen = snprintf(buf, LOG_BUFSIZE, "%s ", log_level_name[level_index]);
+    now_to_string(timebuf, sizeof timebuf);
+    buflen = snprintf(buf, LOG_BUFSIZE, "%s%5d %s ", log_level_name[level_index],
+        thread_id(), timebuf);
 
     va_list ap;
     va_start(ap, fmt);

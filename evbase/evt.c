@@ -36,7 +36,7 @@ EL_P evt_loop_init_with_flag(int flag) {
     /* timer event */
     loop->timer_heap_size = LOOP_INIT_EVTSIZE;
     loop->timer_heap_cnt = 0;    /* start from 1 */
-    loop->timer_heap = (struct evt_timer*)
+    loop->timer_heap = (struct evt_timer**)
         mm_malloc(sizeof(struct evt_timer*) * LOOP_INIT_EVTSIZE);
 
     /* init backend */
@@ -86,21 +86,51 @@ int evt_loop_destroy(EL_P loop) {
 int evt_loop_run(EL_P loop) {
     while (1) {
         EBL_P eb;
+
+        update_cached_time();
+
         /* do event before poll */
         for (eb = loop->evt_befores_head; eb; eb = eb->next) {
             evt_append_pending(loop, eb);
         }
         evt_execute_pending(loop);
+
         /* update fd changes (poll update) */
         evt_fd_changes_update(loop);
 
+        /* cal the poll time (in us)*/
+        update_cached_time();
+        loop->poll_time_us = LOOP_INIT_POLLUS;
+        if (loop->timer_heap_cnt > 0 && (loop->poll_time_us == -1 ||
+            loop->timer_heap[1]->timestamp - CACHED_TIME < loop->poll_time_us)) {
+            loop->poll_time_us = loop->timer_heap[1]->timestamp - CACHED_TIME;
+            if (loop->poll_time_us < 0)
+                loop->poll_time_us = 0;
+        }
+
+        /* poll */
         loop->poll_dispatch(loop);
+        update_cached_time();
+
+        /* queue timer event*/
+        while (loop->timer_heap_cnt > 0) {
+            struct evt_timer *top = loop->timer_heap[1];
+            if (top->timestamp > CACHED_TIME)
+                break;
+            evt_append_pending(loop, top);
+            HEAP_POP(loop->timer_heap, struct evt_timer*, loop->timer_heap_cnt, TIMERP_CMP);
+
+            /* if the timer should repeat, repush to the heap */
+            if (top->repeat > 0) {
+                top->timestamp = top->repeat;
+                evt_timer_start(loop, top);
+            }
+        }
 
         /*queue event after poll */
         for (eb = loop->evt_afters_head; eb; eb = eb->next) {
             evt_append_pending(loop, eb);
         }
-
         evt_execute_pending(loop);
     }
 }
@@ -167,6 +197,7 @@ void evt_io_start(EL_P loop, struct evt_io* w) {
 
 void evt_io_stop(EL_P loop, struct evt_io *ev) {
     /* if ev is in pending queue, use a empty ev instead it */
+    if (ev->active == 0) return;
     ev->active = 0;
     if (ev->pendpos) {
         loop->pending[ev->priority][ev->pendpos-1] = (EB_P)loop->empty_ev;
@@ -224,9 +255,30 @@ void evt_timer_start(EL_P loop, struct evt_timer* ev) {
     ev->active = 1;
     adjust_between(ev->priority, 0, loop->priority_max);
 
+    /* will push 1, +1; start from 1, +1; so need size +2 */
+    check_and_expand_array(loop->timer_heap, struct evt_timer*, loop->timer_heap_size,
+            loop->timer_heap_cnt + 2, add_one, init_array_noop);
+
+    /* adjust relative time to absolute time */
+    ev->timestamp += get_cached_time();
+
+    /* push the evt_timer into heap */
+    HEAP_PUSH(loop->timer_heap, struct evt_timer*, loop->timer_heap_cnt, ev, TIMERP_CMP);
 }
 
 void evt_timer_stop(EL_P loop, struct evt_timer* ev) {
+    /* if ev is in pending queue, use a empty ev instead it */
+    if (ev->active == 0) return;
+    ev->active = 0;
+    if (ev->pendpos) {
+        loop->pending[ev->priority][ev->pendpos-1] = (EB_P)loop->empty_ev;
+        ev->pendpos = 0;
+    }
+
+    if (ev->heap_pos > 0) {
+        HEAP_DELETE(loop->timer_heap, struct evt_timer*, ev->heap_pos,
+            loop->timer_heap_cnt, TIMERP_CMP);
+    }
 
 }
 
@@ -242,6 +294,7 @@ void evt_before_start(EL_P loop, struct evt_before* ev) {
 
 void evt_before_stop(EL_P loop, struct evt_before* ev) {
     /* if ev is in pending queue, use a empty ev instead it */
+    if (ev->active == 0) return;
     ev->active = 0;
     if (ev->pendpos) {
         loop->pending[ev->priority][ev->pendpos-1] = (EB_P)loop->empty_ev;
@@ -263,6 +316,7 @@ void evt_after_start(EL_P loop, struct evt_after* ev) {
 
 void evt_after_stop(EL_P loop, struct evt_after* ev) {
     /* if ev is in pending queue, use a empty ev instead it */
+    if (ev->active == 0) return;
     ev->active = 0;
     if (ev->pendpos) {
         loop->pending[ev->priority][ev->pendpos-1] = (EB_P)loop->empty_ev;

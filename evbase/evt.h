@@ -47,7 +47,7 @@ struct evt_io{
 struct evt_timer{
     EVT_BASE(evt_timer);
 
-    int heap_ind;
+    int heap_pos;
     int64_t repeat;
     int64_t timestamp;
 };
@@ -79,7 +79,7 @@ struct evt_after {
     evt_base_init((ev_), (cb_));                       \
     (ev_)->repeat = (repeat_);                         \
     (ev_)->timestamp = (after_);                       \
-}
+} while (0)
 
 #define evt_before_init(ev_, cb_) evt_base_init((ev_), (cb_))
 #define evt_after_init(ev_, cb_)  evt_base_init((ev_), (cb_))
@@ -93,6 +93,7 @@ void evt_before_stop(EL_P, struct evt_before*);
 void evt_after_start(EL_P, struct evt_after*);
 void evt_after_stop(EL_P, struct evt_after*);
 
+#define TIMERP_CMP(ta, tb) ((ta)->timestamp < (tb)->timestamp)
 
 /* fd */
 typedef struct fd_info* FDI_P;
@@ -100,7 +101,7 @@ struct fd_info {
     EBL_P head;
     int fd;
     uint8_t events;
-    uint8_t revents;   /* event retuan by poll*/
+    uint8_t revents;   /* event return by poll*/
     uint8_t flag;
 };
 
@@ -148,7 +149,7 @@ struct evt_loop {
     EBL_P evt_afters_head;
 
     /* timer event */
-    struct evt_timer* timer_heap;
+    struct evt_timer** timer_heap;
     int timer_heap_cnt;
     int timer_heap_size;
 

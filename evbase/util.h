@@ -29,8 +29,14 @@ static inline void *mm_realloc(void *p, int size) {
     }
     return p;
 }
+static inline void mm_free(void *p) {
+    if (p) {
+        free(p);
+    } else {
+        log_warn("free a void pointer detected!");
+    }
+}
 #define mm_malloc(size) mm_realloc(0, (size))
-#define mm_free(p) free(p)
 
 /* array operation */
 #define multi_two(x) ((x) << 1)
@@ -67,14 +73,19 @@ static inline void *mm_realloc(void *p, int size) {
 #define fd_nonblock(fd)
 
 /* min heap (root=1)*/
+#define HEAP_UPDATE_POS(heap, pos_, npos_) \
+    ((heap)[pos_]->heap_pos = (npos_))
+
 #define HEAP_FIX_UP(heap, type, pos, size, comp) do {      \
     int pos_ = (pos);                                      \
     type val_ =  (heap)[pos_];                             \
     while (pos_ > 1 && comp(val_, (heap)[RSHIFT(pos_)])) { \
         (heap)[pos_] = (heap)[RSHIFT(pos_)];               \
+        HEAP_UPDATE_POS(heap, pos_, pos_);                 \
         pos_ = RSHIFT(pos_);                               \
     }                                                      \
     (heap)[pos_] = val_;                                   \
+    HEAP_UPDATE_POS(heap, pos_, pos_);                     \
 } while (0)
 
 #define HEAP_FIX_DOWN(heap, type, pos, size, comp) do {    \
@@ -87,13 +98,16 @@ static inline void *mm_realloc(void *p, int size) {
         if (comp(val_, (heap)[npos_]))                     \
             break;                                         \
         (heap)[pos_] = (heap)[npos_];                      \
+        HEAP_UPDATE_POS(heap, pos_, pos_);                 \
         pos_ = npos_;                                      \
     }                                                      \
     (heap)[pos_] = val_;                                   \
+    HEAP_UPDATE_POS(heap, pos_, pos_);                     \
 } while (0)
 
+/* here init from  size is  for setting heap_pos */
 #define HEAP_INIT(heap, type, size, comp) do {             \
-    int ind_ = (size) / 2 + 1;                             \
+    int ind_ = (size) /*/ 2 */+ 1;                         \
     while (--ind_)                                         \
         HEAP_FIX_DOWN(heap, type, ind_, size, comp);       \
 } while (0)
@@ -108,13 +122,17 @@ static inline void *mm_realloc(void *p, int size) {
     }                                                      \
 } while (0)
 
-#define HEAP_DELETE(heap, type, pos, size, comp) do {      \
-    (heap)[pos] = (heap)[(size)--];                        \
-    if (pos > 1 && comp((heap)[pos], (heap)[RSHIFT(pos)])){\
-        HEAP_FIX_UP(heap, type, pos, size, comp);          \
-    } else {                                               \
-        HEAP_FIX_DOWN(heap, type, pos, size, comp);        \
-    }                                                      \
+/* here pos will be updated, so use ps_ = pos */
+#define HEAP_DELETE(heap, type, pos, size, comp) do {     \
+    int ps_ = pos;                                        \
+    HEAP_UPDATE_POS(heap, ps_, 0);                        \
+    (heap)[ps_] = (heap)[(size)--];                       \
+    if ((size) == (ps_) - 1) break;                       \
+    if (ps_ > 1 && comp((heap)[ps_],(heap)[RSHIFT(ps_)])){\
+        HEAP_FIX_UP(heap, type, ps_, size, comp);         \
+    } else {                                              \
+        HEAP_FIX_DOWN(heap, type, ps_, size, comp);       \
+    }                                                     \
 } while (0)
 
 #define HEAP_PUSH(heap, type, size, elm, comp) do {        \
@@ -128,6 +146,7 @@ static inline void *mm_realloc(void *p, int size) {
 
 /* time */
 #define MICOR_SECOND 1000000
+#define SECOND(x) ((x) * 1000000)
 extern __thread int64_t cached_time;
 #define CACHED_TIME cached_time
 int64_t get_cached_time();

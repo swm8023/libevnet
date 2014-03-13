@@ -14,7 +14,7 @@ int64_t update_cached_time() {
     struct timeval tv;
     gettimeofday(&tv, NULL);
     int64_t seconds = tv.tv_sec;
-    return seconds * MICOR_SECOND + tv.tv_usec;
+    return cached_time = seconds * MICOR_SECOND + tv.tv_usec;
 }
 
 void now_to_string(char* buf, int len) {
