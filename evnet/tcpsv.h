@@ -14,8 +14,8 @@ extern "C" {
 
 typedef struct sockaddr_in SA;
 typedef struct sockaddr_in* SA_P;
-typedef struct tcp_srv* TCPSRV_P;
-typedef struct tcp_clt* TCPCLT_P;
+
+
 
 #define TCP_DEFAULT_FLAG   0x00
 
@@ -26,7 +26,10 @@ typedef struct tcp_clt* TCPCLT_P;
 
 #define TCP_CLIENT_WAITCLS 0x01
 
-
+//#define TCPCLT_P struct tcp_clt*
+//#define TCPSRV_P struct tcp_srv*
+typedef struct tcp_clt* TCPCLT_P;
+typedef struct tcp_srv* TCPSRV_P;
 /* tcp server */
 struct tcp_srv {
     char name[10];
@@ -69,6 +72,7 @@ void tcp_server_free(TCPSRV_P);
 
 int tcp_server_bind_loop(TCPSRV_P, EL_P);
 int tcp_server_bind_pool(TCPSRV_P, EP_P);
+
 
 /* tcp client */
 struct tcp_clt {

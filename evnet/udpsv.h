@@ -6,13 +6,10 @@ extern "C" {
 #endif
 
 #include <evbase/evt.h>
+#include <evnet/tcpsv.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
 
-typedef struct sockaddr_in SA;
-typedef struct sockaddr_in* SA_P;
-
-typedef struct udp_srv* UDPSRV_P;
 
 #define UDP_BUFSZIE 8192
 
@@ -20,6 +17,11 @@ typedef struct udp_srv* UDPSRV_P;
 #define UDP_SERVER_NOREUSE 0x01
 #define UDP_SERVER_BLOCK   0x02
 
+//typedef struct sockaddr_in SA;
+//typedef struct sockaddr_in* SA_P;
+
+
+typedef struct udp_srv* UDPSRV_P;
 struct udp_srv {
     char name[10];
     int flag;

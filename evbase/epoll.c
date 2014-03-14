@@ -18,7 +18,7 @@ void *epoll_init(EL_P loop) {
 #else
     ept->fd = epoll_create(1);
     if (ept->fd >= 0) 
-        fd_cloexec(ept->fd)
+        fd_cloexec(ept->fd);
 #endif
 
     if (ept->fd < 0) {

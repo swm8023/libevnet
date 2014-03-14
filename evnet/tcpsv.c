@@ -224,7 +224,7 @@ static void tcp_server_accpet(EL_P loop, struct evt_io* ev) {
     client->inbuf = buff_new();
     client->outbuf = buff_new();
 
-
+    atomic_increment(server->cltcnt);
 
     /* callback */
     if (server->on_accept_comp) {
@@ -318,6 +318,7 @@ static void tcp_client_close(TCPCLT_P client) {
     mm_free(client->clt_io[1]);
     mm_free(client);
 
+    atomic_decrement(server->cltcnt);
     /* CALLBACK */
     if (server->on_close_comp) {
         server->on_close_comp(fd);

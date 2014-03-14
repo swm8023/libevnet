@@ -276,7 +276,7 @@ void evt_fd_changes_update(EL_P loop) {
 /* timer event */
 void evt_timer_start(EL_P loop, struct evt_timer* ev) {
     /* adjust event param */
-    if (ev->active == 1) return;
+    if (ev->active == 1 && ev->repeat == 0) return;
     ev->active = 1;
     adjust_between(ev->priority, 0, loop->priority_max);
 
