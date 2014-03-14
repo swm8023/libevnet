@@ -72,7 +72,7 @@ TCPSRV_P tcp_server_init_v2(SA *addr, int flag) {
     memcpy(&server->addr, addr, sizeof(SA));
     server->cltcnt = 0;
 
-    server->loop_list = NULL;
+    server->pool_on   = NULL;
     server->loop_on   = NULL;
     server->loops     = 0;
 
@@ -107,7 +107,8 @@ void tcp_server_free(TCPSRV_P server) {
         close(server->fd);
     }
     if (server != NULL) {
-        if (server->loop_on) {
+        if (server->loop_on && server->srv_io
+            ) {
             evt_io_stop(server->loop_on, server->srv_io);
         }
         mm_free(server->srv_io);
@@ -121,12 +122,40 @@ int tcp_server_bind_loop(TCPSRV_P server, EL_P loop) {
         return -1;
     }
     server->flag &= ~TCP_SERVER_LOOPS;
-    server->loop_list = NULL;
     server->loops = 1;
     server->loop_on = loop;
     /* io event start here */
     evt_io_start(loop, server->srv_io);
+    return 0;
+}
 
+int tcp_server_bind_pool(TCPSRV_P server, EP_P pool) {
+    if (server == NULL || pool == NULL ) {
+        log_error("NULL Pointer in tcp server bind pool");
+        return -1;
+    }
+    server->flag |= TCP_SERVER_LOOPS;
+    server->loops = pool->loops;
+    server->pool_on = pool;
+    /* if not set, use pool's get_next_loop function */
+    if (server->get_next_loop == NULL) {
+        server->get_next_loop = pool->get_next_loop;
+    }
+    server->loop_on = server->get_next_loop(pool);
+    /* io event start here */
+    /* must start in loop_on's thread */
+    if (server->loop_on->owner_thread == 0
+        || server->loop_on->owner_thread == thread_id()) {
+        evt_io_start(server->loop_on, server->srv_io);
+    } else {
+        struct event_param ep;
+        ep.type = EVENT_PARAM_EIOST;
+        ep.temp = 0;
+        ep.arg = server->srv_io;
+        evt_loop_asyncq_append(server->loop_on, &ep);
+        wake_up_loop(server->loop_on);
+    }
+    return 0;
 }
 
 static void tcp_server_accpet(EL_P loop, struct evt_io* ev) {
@@ -160,8 +189,9 @@ static void tcp_server_accpet(EL_P loop, struct evt_io* ev) {
     client->relate_srv = server;
     memcpy(&client->addr, &addr, sizeof(SA));
 
+    /* get loop the client should on */
     if ((server->flag & TCP_SERVER_LOOPS) && server->get_next_loop) {
-        client->loop_on = server->get_next_loop(server);
+        client->loop_on = server->get_next_loop(server->pool_on);
     } else {
         client->loop_on = server->loop_on;
     }
@@ -175,7 +205,20 @@ static void tcp_server_accpet(EL_P loop, struct evt_io* ev) {
     evt_io_init(client->clt_io[1], tcp_client_write, client_fd, EVT_WRITE);
     evt_set_data(client->clt_io[1], client);
 
-    evt_io_start(client->loop_on, client->clt_io[0]);
+    /* only start in loop_on's thread */
+    if (client->loop_on->owner_thread == 0
+        || client->loop_on->owner_thread == thread_id()) {
+        evt_io_start(client->loop_on, client->clt_io[0]);
+    } else {
+        log_warn("accept fd(%d) at %d, run at %d", client->fd, thread_id(),
+            client->loop_on->owner_thread);
+        struct event_param ep;
+        ep.type = EVENT_PARAM_EIOST;
+        ep.temp = 0;
+        ep.arg = client->clt_io[0];
+        evt_loop_asyncq_append(client->loop_on, &ep);
+        wake_up_loop(client->loop_on);
+    }
 
     /* client io buffer */
     client->inbuf = buff_new();
@@ -258,6 +301,7 @@ static void tcp_client_write(EL_P loop, struct evt_io* ev) {
 
 static void tcp_client_close(TCPCLT_P client) {
     TCPSRV_P server = (TCPSRV_P)client->relate_srv;
+    int fd = client->fd;
     log_inner("server fd:%d, close fd:%d.",
         server->fd, client->fd);
     if (client->fd != -1) {
@@ -275,12 +319,12 @@ static void tcp_client_close(TCPCLT_P client) {
     mm_free(client);
 
     /* CALLBACK */
-    // if (server->tcp_client_close) {
-    //     //use time now, not revent time
-    //     server->
-    // }
+    if (server->on_close_comp) {
+        server->on_close_comp(fd);
+    }
 }
 
+/* send message */
 int tcp_send(TCPCLT_P client, const char* str, int size) {
     TCPSRV_P server = (TCPSRV_P)client->relate_srv;
     if (client == NULL) {
@@ -313,5 +357,41 @@ int tcp_send(TCPCLT_P client, const char* str, int size) {
         buff_write(client->outbuf, str, size);
         evt_io_start(client->loop_on, client->clt_io[1]);/*write*/
     }
+    return 0;
+}
+
+/* send only if buffer size > mask */
+int tcp_delay_send(TCPCLT_P client, const char* str, int size, int mask) {
+    if (client == NULL) {
+        log_warn("send to a NULL client");
+        return -1;
+    }
+    if (BUFF_USED(client->outbuf) < mask && !(client->flag & TCP_CLIENT_WAITCLS)) {
+        evt_io_stop(client->loop_on, client->clt_io[1]);
+    } else {
+        evt_io_start(client->loop_on, client->clt_io[1]);
+    }
+    buff_write(client->outbuf, str, size);
+    return 0;
+}
+
+/* flush outbuf */
+int tcp_flush(TCPCLT_P client) {
+    if (client == NULL) {
+        log_warn("send to a NULL client");
+        return -1;
+    }
+    evt_io_start(client->loop_on, client->clt_io[1]);
+    return 0;
+}
+
+/* send and clear buffer */
+int tcp_buffer_send(TCPCLT_P client, BUF_P buf) {
+    if (client == NULL) {
+        log_warn("send to a NULL client");
+        return -1;
+    }
+    tcp_send(client, buf->buf + buf->r_ind, BUFF_USED(buf));
+    buf->r_ind = buf->w_ind = 0;
     return 0;
 }

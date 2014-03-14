@@ -37,7 +37,7 @@ struct tcp_srv {
 
     atomic32 cltcnt;
 
-    EL_P *loop_list;
+    EP_P pool_on;
     EL_P loop_on;
     int loops;
 
@@ -45,16 +45,20 @@ struct tcp_srv {
     void (*on_accept_comp)(TCPCLT_P);
     void (*on_read_comp)(TCPCLT_P, BUF_P, int);
     void (*on_write_comp)(TCPCLT_P, BUF_P, int);
-    //void (*on_close_comp)(TCPCLT_P);
-    EL_P (*get_next_loop)(TCPSRV_P);
+    void (*on_close_comp)(int);
+    EL_P (*get_next_loop)(EP_P);
 };
 
-#define TCP_SET_ACCEPT_COMP_CB(server, cb) \
+#define tcp_set_accept_comp_cb(server, cb) \
     (server)->on_accept_comp = (cb)
-#define TCP_SET_READ_COMP_CB(server, cb) \
+#define tcp_set_read_comp_cb(server, cb) \
     (server)->on_read_comp = (cb)
-#define TCP_SET_WRITE_COMP_CB(server, cb) \
+#define tcp_set_write_comp_cb(server, cb) \
     (server)->on_write_comp = (cb)
+#define tcp_set_close_comp_cb(server, cb) \
+    (server)->on_close_comp = (cb)
+#define tcp_set_next_loop_cb(server, cb) \
+    (server)->get_next_loop = (cb)
 
 
 /* init and destroy */
@@ -64,7 +68,7 @@ TCPSRV_P tcp_server_init_v2(SA *addr, int);
 void tcp_server_free(TCPSRV_P);
 
 int tcp_server_bind_loop(TCPSRV_P, EL_P);
-//int tcp_server_bind_loops(TCPSRV_P, );
+int tcp_server_bind_pool(TCPSRV_P, EP_P);
 
 /* tcp client */
 struct tcp_clt {
@@ -81,6 +85,9 @@ struct tcp_clt {
 };
 
 int tcp_send(TCPCLT_P, const char*, int);
+int tcp_delay_send(TCPCLT_P, const char*, int, int);
+int tcp_flush(TCPCLT_P);
+int tcp_buffer_send(TCPCLT_P, BUF_P);
 
 #ifdef __cplusplus
 }

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdarg.h>
+#include <errno.h>
 
 #include <evbase/log.h>
 
@@ -46,6 +47,10 @@ void log_append(struct log_if *logif, uint8_t level_index, const char *fmt, ...)
     va_start(ap, fmt);
     buflen += vsnprintf(buf + buflen, LOG_BUFSIZE - buflen, fmt, ap);
     va_end(ap);
+
+    if (level_index >= LOG_WARN_INDEX) {
+        buflen += snprintf(buf + buflen, LOG_BUFSIZE - buflen, "(%s)", strerror(errno));
+    }
 
     buf[buflen] = '\n';
     buf[++buflen] = '\0';

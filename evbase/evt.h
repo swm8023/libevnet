@@ -7,6 +7,9 @@ extern "C" {
 
 #include <stdint.h>
 
+#include <evbase/thread.h>
+#include <evbase/util.h>
+
 
 struct evt_loop;
 typedef struct evt_loop* EL_P;
@@ -129,7 +132,7 @@ void evt_fd_change(EL_P, int);
 #define LOOP_INIT_PENDSIZE 32
 #define LOOP_INIT_EVTSIZE  32
 #define LOOP_PRIORITY_MAX  10
-#define LOOP_INIT_POLLUS   10000000
+#define LOOP_INIT_POLLUS   30000000
 
 struct evt_loop {
     /* status */
@@ -160,6 +163,14 @@ struct evt_loop {
     int pending_cnt[LOOP_PRIORITY_MAX];
     int pending_size[LOOP_PRIORITY_MAX];
 
+    /* queue of callback from other thread */
+    lock_t asyncq_lock;
+    struct event_param* asyncq;
+    int asyncq_size;
+    int asyncq_cnt;
+    int eventfd;
+    struct evt_io* eventio;
+
     /* backend */
     int poll_feature;
     int64_t poll_time_us;      /*in microsecond*/
@@ -182,6 +193,39 @@ int evt_loop_run(EL_P);
 
 void evt_append_pending(EL_P, void* /*EB_P*/);
 void evt_execute_pending(EL_P loop);
+
+/* evt_pool */
+#define POOL_STATU_INIT    0x01
+#define POOL_STATU_STARTED 0x02
+#define POOL_STATU_RUNNING 0x04
+#define POOL_STATU_PAUSE   0x08
+#define POOL_STATU_QUITING 0x10
+#define POOL_STATU_STOP    0x20
+
+typedef struct evt_pool* EP_P;
+struct evt_pool {
+    int runs;
+    int loops;
+    int status;
+    EL_P *loop;
+
+    lock_t run_lock;
+    cond_t run_cond;
+
+    int pre_loop;
+    EL_P (*get_next_loop)(EP_P);
+};
+
+EP_P evt_pool_init_with_flag(int, int);
+EP_P evt_pool_init(int);
+void evt_pool_destroy(EP_P);
+int evt_pool_run(EP_P);
+static EL_P default_pool_get_next_loop(EP_P);
+static THREAD_FUNCTION(new_loop_thread, p);
+
+
+void evt_loop_asyncq_append(EL_P, struct event_param*);
+void wake_up_loop(EL_P);
 
 #ifdef __cplusplus
 }

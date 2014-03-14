@@ -7,6 +7,22 @@
 #include <time.h>
 #include <assert.h>
 
+/* memory function */
+void *mm_realloc(void *p, int size) {
+    p = realloc(p, size);
+    if (p == NULL && size) {
+        log_fatal("memory allocate failed");
+    }
+    return p;
+}
+void mm_free(void *p) {
+    if (p) {
+        free(p);
+    } else {
+        log_warn("free a void pointer detected!");
+    }
+}
+
 /* socket operation */
 int fd_reuse(int fd) {
     const int on = 1;
@@ -33,8 +49,8 @@ int fd_nonblock(int fd) {
 int ignore_sigpipe() {
     struct sigaction act;
     act.sa_handler = SIG_IGN;
-    if (sigaction(SIGPIPE, &act, NULL) == 0){
-        log_trace("ignore SIGPIPRI error()");
+    if (sigaction(SIGPIPE, &act, NULL) != 0){
+        log_error("ignore SIGPIPRI error()");
     }
 }
 

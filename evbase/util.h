@@ -22,20 +22,8 @@ extern "C" {
 #endif
 
 /* memory function */
-static inline void *mm_realloc(void *p, int size) {
-    p = realloc(p, size);
-    if (p == NULL && size) {
-        log_fatal("memory allocate failed");
-    }
-    return p;
-}
-static inline void mm_free(void *p) {
-    if (p) {
-        free(p);
-    } else {
-        log_warn("free a void pointer detected!");
-    }
-}
+void *mm_realloc(void *p, int size);
+void mm_free(void *p);
 #define mm_malloc(size) mm_realloc(0, (size))
 
 /* array operation */
@@ -155,6 +143,15 @@ int64_t get_cached_time();
 int64_t update_cached_time();
 void now_to_string(char*, int);
 void time_to_string(int64_t, char*,int);
+
+/* callback function struct */
+#define EVENT_PARAM_EIOST 1
+
+struct event_param {
+    uint8_t type;
+    uint8_t temp;
+    void *arg;
+};
 
 
 #ifdef __cplusplus
