@@ -2,40 +2,22 @@
 #include <string.h>
 
 #include <evbase/log.h>
+#include <evnet/filelog.h>
 #include <evbase/evt.h>
 #include <evbase/util.h>
 #include <evnet/tcpsv.h>
 #include <evnet/udpsv.h>
+#include <evbase/thread.h>
+#include <evplug/http.h>
 
 
-atomic64 cal_tt = 0;
-int sec = 10;
-
-void on_accept_comp(TCPCLT_P client) {
-    //log_debug("Accept a connect fd:%d", client->fd);
-}
-void on_read_comp(TCPCLT_P client, BUF_P buf, int len) {
-    atomic_add_get(cal_tt, BUFF_USED(buf));
-    tcp_buffer_send(client, buf);
-}
-void on_write_comp(TCPCLT_P client, BUF_P buf , int len) {
-
-}
-void on_udp_read(UDPSRV_P server, SA_P addr, const char* cont, int len) {
-    udp_send(server, addr, cont, len);
-}
-
-void timer_cb(EL_P loop, struct evt_timer* ev) {
-    TCPSRV_P server = (TCPSRV_P)ev->data;
-
-    log_warn("ttl => %lfMb/s client => %d", atomic_get(cal_tt)/1024.0/1024.0/sec,
-    atomic_get(server->cltcnt));
-}
 int main (int argc, char *argv[]) {
     ignore_sigpipe();
-
     set_default_logif_level(LOG_WARN);
 
+    http_start(8887, 4);
+
+/*
     EP_P pool = evt_pool_init(4);
     TCPSRV_P server  = tcp_server_init(8887, TCP_DEFAULT_FLAG);
     //tcp_set_accept_comp_cb(server, on_accept_comp);
@@ -52,7 +34,7 @@ int main (int argc, char *argv[]) {
     evt_timer_start(pool->get_next_loop(pool), &evtm);
 
     evt_pool_run(pool);
-
+*/
 
     /*
     EL_P loop = evt_loop_init();

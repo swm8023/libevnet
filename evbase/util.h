@@ -139,8 +139,10 @@ int fd_reuse(int);
 #define SECOND(x) ((x) * 1000000)
 extern __thread int64_t cached_time;
 #define CACHED_TIME cached_time
+int64_t get_time_us();
 int64_t get_cached_time();
 int64_t update_cached_time();
+void cachetime_to_string(char*, int);
 void now_to_string(char*, int);
 void time_to_string(int64_t, char*,int);
 

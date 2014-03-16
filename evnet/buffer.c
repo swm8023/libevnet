@@ -7,9 +7,13 @@
 #include <evnet/buffer.h>
 
 BUF_P buff_new() {
+    return buff_new_size(BUFF_INIT_SIZE);
+}
+
+BUF_P buff_new_size(int size) {
     BUF_P buf;
     buf = (BUF_P)mm_malloc(sizeof(BUF));
-    buff_init(buf);
+    buff_init(buf, size);
     return buf;
 }
 
@@ -19,13 +23,15 @@ void buff_free(BUF_P buf) {
     mm_free(buf);
 }
 
-void buff_init(BUF_P buf) {
-    buf->size = BUFF_INIT_SIZE;
+void buff_init(BUF_P buf, int size) {
+    buf->size = size;
     buf->buf = (char*)mm_malloc(buf->size);
     buf->r_ind = buf->w_ind = 0;
 }
 
-
+void buff_clear(BUF_P buf) {
+    buf->r_ind = buf->w_ind = 0;
+}
 
 int buff_expand(BUF_P buf, int size) {
     int oldsize = BUFF_USED(buf);
@@ -36,7 +42,7 @@ int buff_expand(BUF_P buf, int size) {
     return 0;
 }
 
-const char* buff_peak(BUF_P buf) {
+const char* buff_peek(BUF_P buf) {
     /* return the pointer point to data started */
     return buf->buf + buf->r_ind;
 }

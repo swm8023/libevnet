@@ -23,6 +23,7 @@ EL_P evt_loop_init_with_flag(int flag) {
 
     loop->priority_max = 0;
 
+
     /* init fds */
     loop->fds_size = LOOP_INIT_FDS;
     loop->fds_mod_size = LOOP_INIT_FDS;
@@ -33,6 +34,7 @@ EL_P evt_loop_init_with_flag(int flag) {
     /* before && after event */
     loop->evt_befores_head = NULL;
     loop->evt_afters_head = NULL;
+
 
     /* timer event */
     loop->timer_heap_size = LOOP_INIT_EVTSIZE;
@@ -80,13 +82,18 @@ EL_P evt_loop_init_with_flag(int flag) {
     loop->eventio = (struct evt_io*)mm_malloc(sizeof(struct evt_io));
     evt_io_init(loop->eventio, evt_do_loop_wakeup, loop->eventfd, EVT_READ);
     evt_io_start(loop, loop->eventio);
+    lock_alloc(loop->asyncq_lock);
+
+    /* quit lock */
+    lock_alloc(loop->quit_lock);
+    cond_alloc(loop->quit_cond);
 
     return loop;
 
 loop_init_failed:
     log_error("evt_loop init failed!");
     /* release resouce */
-
+    evt_loop_destroy(loop);
     return NULL;
 }
 
@@ -96,18 +103,62 @@ EL_P evt_loop_init() {
 }
 
 int evt_loop_quit(EL_P loop) {
-
+    loop->status |= LOOP_STATU_QUITING;
+    /* if run in loop's thread, don't need wake up */
+    if (loop->owner_thread != thread_id()) {
+        wake_up_loop(loop);
+    }
 }
 
 int evt_loop_destroy(EL_P loop) {
+    int i;
+    if (loop == NULL) {
+        log_warn("destroy a NULL loop");
+    }
+    /* if not stoped, stop first */
+    if (loop->status & LOOP_STATU_RUNNING) {
+        evt_loop_quit(loop);
+        /* if stop in another thread, wait */
+        if (loop->owner_thread != thread_id()) {
+            lock_lock(loop->quit_lock);
+            while (loop->status & LOOP_STATU_RUNNING) {
+                cond_wait(loop->quit_cond, loop->quit_lock);
+            }
+            lock_unlock(loop->quit_lock);
+        /* if stop in loop's thread , just set flag and return*/
+        } else {
+            loop->status |= LOOP_STATU_WAITDESTROY;
+            return 0;
+        }
+    }
+    /* release the resource */
+    mm_free(loop->fds_mod);
+    mm_free(loop->fds);
+    mm_free(loop->timer_heap);
+    for (i = 0; i <= loop->priority_max; i++) {
+        mm_free(loop->pending[i]);
+    }
+    lock_free(loop->asyncq_lock);
+    mm_free(loop->asyncq);
+    mm_free(loop->eventio);
+    mm_free(loop->empty_ev);
+    loop->poll_destroy(loop);
 
+    lock_free(loop->quit_lock);
+    cond_free(loop->quit_cond);
+
+    close(loop->eventfd);
+
+    mm_free(loop);
+    log_inner("loop destroyed!");
+    return 0;
 }
 
 int evt_loop_run(EL_P loop) {
     loop->owner_thread = thread_id();
     loop->status = LOOP_STATU_STARTED | LOOP_STATU_RUNNING;
 
-    while (1) {
+    while (!(loop->status & LOOP_STATU_QUITING)) {
         EBL_P eb;
 
         update_cached_time();
@@ -155,6 +206,20 @@ int evt_loop_run(EL_P loop) {
             evt_append_pending(loop, eb);
         }
         evt_execute_pending(loop);
+    }
+
+    /* quited */
+    loop->status |= LOOP_STATU_STARTED;
+    loop->status |= LOOP_STATU_STOP;
+    loop->status &= ~LOOP_STATU_RUNNING;
+    loop->status &= ~POOL_STATU_QUITING;
+    loop->status &= ~POOL_STATU_PAUSE;
+    /* call evt_loop_destroy in this thread already, really destroy here */
+    if (loop->status & LOOP_STATU_WAITDESTROY) {
+        evt_loop_destroy(loop);
+    /* signal if there sb. wait go end */
+    } else {
+        cond_broadcast(loop->quit_cond);
     }
 }
 
@@ -426,7 +491,10 @@ EP_P evt_pool_init(int num) {
 }
 
 void evt_pool_destroy(EP_P pool) {
-
+    int i;
+    for (i; i < pool->loops; i++) {
+        evt_loop_destroy(pool->loop[i]);
+    }
 }
 
 static EL_P default_pool_get_next_loop(EP_P pool) {
@@ -451,13 +519,12 @@ int evt_pool_run(EP_P pool) {
     int i;
     thread_t th;
     pool->runs = 1;
-
+    /* run loop[1~n-1] in new thread and run loop[0] in this thread */
     for (i = 1; i < pool->loops; i++) {
         thread_start(th, new_loop_thread, pool);
     }
 
     evt_loop_run(pool->loop[0]);
-
 }
 
 /* async operation from other thread */

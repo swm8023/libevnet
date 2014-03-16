@@ -205,6 +205,10 @@ static void tcp_server_accpet(EL_P loop, struct evt_io* ev) {
     evt_io_init(client->clt_io[1], tcp_client_write, client_fd, EVT_WRITE);
     evt_set_data(client->clt_io[1], client);
 
+    /* client io buffer */
+    client->inbuf = buff_new();
+    client->outbuf = buff_new();
+
     /* only start in loop_on's thread */
     if (client->loop_on->owner_thread == 0
         || client->loop_on->owner_thread == thread_id()) {
@@ -220,9 +224,7 @@ static void tcp_server_accpet(EL_P loop, struct evt_io* ev) {
         wake_up_loop(client->loop_on);
     }
 
-    /* client io buffer */
-    client->inbuf = buff_new();
-    client->outbuf = buff_new();
+
 
     atomic_increment(server->cltcnt);
 
@@ -333,7 +335,7 @@ int tcp_send(TCPCLT_P client, const char* str, int size) {
         return -1;
     }
     /* try directly send first if no data in the send buffer */
-    if (0/*BUFF_USED(client->outbuf) == 0*/) {
+    if (BUFF_USED(client->outbuf) == 0) {
         int len = write(client->fd, str, size);
         if (len == -1) {
             /* error but can't release resources here, because

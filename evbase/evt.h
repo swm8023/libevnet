@@ -180,6 +180,10 @@ struct evt_loop {
     int (*poll_dispatch)(EL_P);
     int (*poll_update)(EL_P, int, uint8_t, uint8_t);
 
+    /* quit lock */
+    lock_t quit_lock;
+    cond_t quit_cond;
+
     /* some default callback */
     struct evt_before *empty_ev;   /* be used when stop a pending event */
 };
@@ -195,12 +199,13 @@ void evt_append_pending(EL_P, void* /*EB_P*/);
 void evt_execute_pending(EL_P loop);
 
 /* evt_pool */
-#define POOL_STATU_INIT    0x01
-#define POOL_STATU_STARTED 0x02
-#define POOL_STATU_RUNNING 0x04
-#define POOL_STATU_PAUSE   0x08
-#define POOL_STATU_QUITING 0x10
-#define POOL_STATU_STOP    0x20
+#define POOL_STATU_INIT         0x01
+#define POOL_STATU_STARTED      0x02
+#define POOL_STATU_RUNNING      0x04
+#define POOL_STATU_PAUSE        0x08
+#define POOL_STATU_QUITING      0x10
+#define POOL_STATU_STOP         0x20
+#define LOOP_STATU_WAITDESTROY  0x40
 
 typedef struct evt_pool* EP_P;
 struct evt_pool {

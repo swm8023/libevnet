@@ -1,5 +1,5 @@
 #ifndef EVNET_TCPSV_H
-#define EVNET_TCPCV_H
+#define EVNET_TCPSV_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -14,8 +14,6 @@ extern "C" {
 
 typedef struct sockaddr_in SA;
 typedef struct sockaddr_in* SA_P;
-
-
 
 #define TCP_DEFAULT_FLAG   0x00
 

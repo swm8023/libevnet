@@ -19,6 +19,7 @@ static const char* log_level_name[LOG_LEVELS] = {
     "LOG_FATAL"
 };
 
+/* default log interface, by console */
 static struct log_if default_log_if_s = {
     (uint8_t)(LOG_MASK),
     log_console_output_cb,
@@ -39,7 +40,7 @@ void log_append(struct log_if *logif, uint8_t level_index, const char *fmt, ...)
     char buf[LOG_BUFSIZE + 1], timebuf[30];
     size_t buflen = 0;
 
-    now_to_string(timebuf, sizeof timebuf);
+    cachetime_to_string(timebuf, sizeof timebuf);
     buflen = snprintf(buf, LOG_BUFSIZE, "%s%5d %s ", log_level_name[level_index],
         thread_id(), timebuf);
 
@@ -68,11 +69,14 @@ void log_append(struct log_if *logif, uint8_t level_index, const char *fmt, ...)
 static void log_console_output_cb(const char *str, size_t size) {
     fwrite(str, size, 1, stdout);
 }
+
 static void log_console_flush_cb() {
     fflush(stdout);
 }
+
 static void log_console_fatal_cb() {
     printf("!!!fatal error, program exit!!!\n");
     log_console_flush_cb();
     _exit(-1);
 }
+

@@ -77,10 +77,6 @@ extern struct log_if *default_log_if;
 /* log function */
 void log_append(struct log_if *logif, uint8_t level_index, const char *fmt, ...);
 
-/* log with file */
-int log_file_open(const char *);
-void log_file_close();
-
 
 #ifdef __cplusplus
 }

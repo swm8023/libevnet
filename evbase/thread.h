@@ -64,7 +64,7 @@ struct cond_ops {
     void (*free)(void *, int);
     int (*signal)(void *cond, int);
     int (*wait)(void *cond, void *lock,
-        const struct timeval *, int);
+        int64_t, int);
 };
 extern struct cond_ops scnet_cond_ops;
 void set_cond_ops(struct cond_ops);
@@ -82,7 +82,7 @@ void set_cond_ops(struct cond_ops);
 #define cond_free(condvar) cond_free_attr(condvar, 0)
 #define cond_signal(condvar) cond_signal_attr(condvar, 0)
 #define cond_broadcast(condvar) cond_signal_attr(condvar, 1)
-#define cond_wait(condvar, lockvar) cond_wait_attr(condvar, lockvar, NULL, 0)
+#define cond_wait(condvar, lockvar) cond_wait_attr(condvar, lockvar, 0, 0)
 #define cond_wait_timed(condvar, lockvar, timeval) cond_wait_attr(condvar, lockvar, timeval, 0)
 
 
