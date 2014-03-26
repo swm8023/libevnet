@@ -114,10 +114,13 @@ int epoll_update(EL_P loop, int fd, uint8_t oev, uint8_t nev) {
     /* don't focus on this fd, DEL it */
     if (nev == 0) {
         log_inner("epoll_update do EPOLL_CTL_DEL with fd: %d", fd);
+        /* do nothing now */
+        /*
         if (epoll_ctl(ept->fd, EPOLL_CTL_DEL, fd, NULL)) {
             log_error("epoll_ctl_del error with fd: %d", fd);
             return -1;
         }
+        */
 
     /* don't focus on this fd previous, ADD it */
     } else if (oev == 0) {

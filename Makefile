@@ -12,7 +12,8 @@ all:
 
 # annotation when release version
 DEBUG       := y
-TARGET_PROG := main
+TARGET_PROG := #main
+TARGET_LIB  := libevnet.a
 
 # project directory	
 DEBUG_DIR   := ./Debug
@@ -83,7 +84,7 @@ $(BIN_DIR)/%.o: %.cpp
 
 # add-target(target,objs,cc)
 define add-target
-  REAL_TARGET += $(BIN_DIR)/$1
+  REAL_TARGET_BIN += $(BIN_DIR)/$1
 
   $(BIN_DIR)/$1: $2
 	$3 $(LDFLAGS) $$^ $(LOADLIBES) $(LDLIBS) -o $$@
@@ -92,9 +93,20 @@ endef
 # call add-target
 $(foreach targ,$(TARGET_PROG),$(eval $(call add-target,$(targ),$(objs),$(CC))))
 
-all: $(REAL_TARGET) $(TARGET_LIBS)
 
-lines:
+#all: $(REAL_TARGET_BIN)
+all: lib
+
+REAL_TARGET_LIB = $(BIN_DIR)/$(TARGET_LIB)
+$(REAL_TARGET_LIB): $(objs)
+	ar rv $@ $^
+
+lib: $(REAL_TARGET_LIB)
+	$(foreach dirname,$(sort $(dir $(sources_c) $(sources_cpp))),\
+  		$(shell $(MKDIR) $(BIN_DIR)/headers/$(dirname)))
+	$(foreach targ,$(sources_h),$(shell cp $(targ) $(BIN_DIR)/headers/$(targ)))
+
+
 
 clean: 
 	$(RM) $(BIN_DIR)
