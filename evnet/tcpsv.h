@@ -46,8 +46,10 @@ struct tcp_srv {
     void (*on_accept_comp)(TCPCLT_P);
     void (*on_read_comp)(TCPCLT_P, BUF_P, int);
     void (*on_write_comp)(TCPCLT_P, BUF_P, int);
-    void (*on_close_comp)(int);
+    void (*on_client_close)(TCPCLT_P);
     EL_P (*get_next_loop)(EP_P);
+
+    void *data;
 };
 
 #define tcp_set_accept_comp_cb(server, cb) \
@@ -56,8 +58,8 @@ struct tcp_srv {
     (server)->on_read_comp = (cb)
 #define tcp_set_write_comp_cb(server, cb) \
     (server)->on_write_comp = (cb)
-#define tcp_set_close_comp_cb(server, cb) \
-    (server)->on_close_comp = (cb)
+#define tcp_set_client_close_cb(server, cb) \
+    (server)->on_client_close = (cb)
 #define tcp_set_next_loop_cb(server, cb) \
     (server)->get_next_loop = (cb)
 
@@ -84,7 +86,11 @@ struct tcp_clt {
     struct evt_io* clt_io[2];
     BUF_P inbuf;
     BUF_P outbuf;
+    void *data;
 };
+
+int tcp_set_srvdata(TCPSRV_P, void*);
+int tcp_set_clidata(TCPCLT_P, void*);
 
 int tcp_send(TCPCLT_P, const char*, int);
 int tcp_delay_send(TCPCLT_P, const char*, int, int);

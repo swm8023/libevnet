@@ -304,11 +304,15 @@ static void tcp_client_write(EL_P loop, struct evt_io* ev) {
 static void tcp_client_close(TCPCLT_P client) {
     TCPSRV_P server = (TCPSRV_P)client->relate_srv;
     int fd = client->fd;
+
+    /* CALLBACK */
+    if (server->on_client_close) {
+        server->on_client_close(client);
+    }
+
     log_inner("server fd:%d, close fd:%d.",
         server->fd, client->fd);
-    if (client->fd != -1) {
-        close(client->fd);
-    }
+    atomic_decrement(server->cltcnt);
 
     if (client) {
         buff_free(client->inbuf);
@@ -318,13 +322,19 @@ static void tcp_client_close(TCPCLT_P client) {
     evt_io_stop(client->loop_on, client->clt_io[1]);/*write*/
     mm_free(client->clt_io[0]);
     mm_free(client->clt_io[1]);
-    mm_free(client);
 
-    atomic_decrement(server->cltcnt);
-    /* CALLBACK */
-    if (server->on_close_comp) {
-        server->on_close_comp(fd);
+    if (client->fd != -1) {
+        close(client->fd);
     }
+    mm_free(client);
+}
+
+int tcp_set_srvdata(TCPSRV_P server, void* data) {
+    server->data = data;
+}
+
+int tcp_set_clidata(TCPCLT_P client, void* data) {
+    client->data = data;
 }
 
 /* send message */

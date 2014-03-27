@@ -133,6 +133,7 @@ int fd_cloexec(int);
 int fd_nonblock(int);
 int fd_reuse(int);
 
+int ignore_sigpipe()
 
 /* time operation */
 #define MICOR_SECOND 1000000

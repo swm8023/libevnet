@@ -4,384 +4,776 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+BUF	.\Debug\headers\evnet\buffer.h	/^typedef struct buffer BUF;$/;"	t	typeref:struct:buffer
 BUF	.\evnet\buffer.h	/^typedef struct buffer BUF;$/;"	t	typeref:struct:buffer
+BUFF_INIT_SIZE	.\Debug\headers\evnet\buffer.h	12;"	d
 BUFF_INIT_SIZE	.\evnet\buffer.h	12;"	d
-BUFF_LEFT	.\evnet\buffer.h	21;"	d
-BUFF_REAL_LEFT	.\evnet\buffer.h	23;"	d
-BUFF_SETRIND	.\evnet\buffer.h	25;"	d
-BUFF_SETWIND	.\evnet\buffer.h	26;"	d
-BUFF_SIZE	.\evnet\buffer.h	24;"	d
-BUFF_USED	.\evnet\buffer.h	22;"	d
+BUFF_LEFT	.\Debug\headers\evnet\buffer.h	22;"	d
+BUFF_LEFT	.\evnet\buffer.h	22;"	d
+BUFF_REAL_LEFT	.\Debug\headers\evnet\buffer.h	24;"	d
+BUFF_REAL_LEFT	.\evnet\buffer.h	24;"	d
+BUFF_SETRIND	.\Debug\headers\evnet\buffer.h	26;"	d
+BUFF_SETRIND	.\evnet\buffer.h	26;"	d
+BUFF_SETWIND	.\Debug\headers\evnet\buffer.h	27;"	d
+BUFF_SETWIND	.\evnet\buffer.h	27;"	d
+BUFF_SIZE	.\Debug\headers\evnet\buffer.h	25;"	d
+BUFF_SIZE	.\evnet\buffer.h	25;"	d
+BUFF_USED	.\Debug\headers\evnet\buffer.h	23;"	d
+BUFF_USED	.\evnet\buffer.h	23;"	d
+BUF_P	.\Debug\headers\evnet\buffer.h	/^typedef struct buffer* BUF_P;$/;"	t	typeref:struct:buffer
 BUF_P	.\evnet\buffer.h	/^typedef struct buffer* BUF_P;$/;"	t	typeref:struct:buffer
+CACHED_TIME	.\Debug\headers\evbase\util.h	141;"	d
 CACHED_TIME	.\evbase\util.h	141;"	d
+DEFINE_TEST	.\Debug\headers\evbase\util.h	18;"	d
+DEFINE_TEST	.\Debug\headers\evbase\util.h	21;"	d
 DEFINE_TEST	.\evbase\util.h	18;"	d
 DEFINE_TEST	.\evbase\util.h	21;"	d
+EBL_P	.\Debug\headers\evbase\evt.h	/^typedef struct evt_base_list* EBL_P;$/;"	t	typeref:struct:evt_base_list
 EBL_P	.\evbase\evt.h	/^typedef struct evt_base_list* EBL_P;$/;"	t	typeref:struct:evt_base_list
+EB_P	.\Debug\headers\evbase\evt.h	/^typedef struct evt_base* EB_P;$/;"	t	typeref:struct:evt_base
 EB_P	.\evbase\evt.h	/^typedef struct evt_base* EB_P;$/;"	t	typeref:struct:evt_base
+EEPOLL_P	.\Debug\headers\evbase\epoll.h	/^typedef struct evt_epoll* EEPOLL_P;$/;"	t	typeref:struct:evt_epoll
 EEPOLL_P	.\evbase\epoll.h	/^typedef struct evt_epoll* EEPOLL_P;$/;"	t	typeref:struct:evt_epoll
+EL_P	.\Debug\headers\evbase\evt.h	/^typedef struct evt_loop* EL_P;$/;"	t	typeref:struct:evt_loop
 EL_P	.\evbase\evt.h	/^typedef struct evt_loop* EL_P;$/;"	t	typeref:struct:evt_loop
+EPOLL_INIT_NEVENT	.\Debug\headers\evbase\epoll.h	12;"	d
 EPOLL_INIT_NEVENT	.\evbase\epoll.h	12;"	d
+EPOLL_MAX_NEVENT	.\Debug\headers\evbase\epoll.h	13;"	d
 EPOLL_MAX_NEVENT	.\evbase\epoll.h	13;"	d
+EP_EVT	.\Debug\headers\evbase\epoll.h	/^typedef struct epoll_event EP_EVT;$/;"	t	typeref:struct:epoll_event
 EP_EVT	.\evbase\epoll.h	/^typedef struct epoll_event EP_EVT;$/;"	t	typeref:struct:epoll_event
+EP_P	.\Debug\headers\evbase\evt.h	/^typedef struct evt_pool* EP_P;$/;"	t	typeref:struct:evt_pool
 EP_P	.\evbase\evt.h	/^typedef struct evt_pool* EP_P;$/;"	t	typeref:struct:evt_pool
+EVBASE_EPOLL_H	.\Debug\headers\evbase\epoll.h	2;"	d
 EVBASE_EPOLL_H	.\evbase\epoll.h	2;"	d
+EVBASE_EVT_H	.\Debug\headers\evbase\evt.h	2;"	d
 EVBASE_EVT_H	.\evbase\evt.h	2;"	d
+EVBASE_LOG_H	.\Debug\headers\evbase\log.h	2;"	d
 EVBASE_LOG_H	.\evbase\log.h	2;"	d
+EVBASE_THREAD_H	.\Debug\headers\evbase\thread.h	2;"	d
 EVBASE_THREAD_H	.\evbase\thread.h	2;"	d
+EVBASE_UTIL_H	.\Debug\headers\evbase\util.h	2;"	d
 EVBASE_UTIL_H	.\evbase\util.h	2;"	d
+EVENT_PARAM_EIOST	.\Debug\headers\evbase\util.h	150;"	d
+EVENT_PARAM_EIOST	.\evbase\util.h	150;"	d
+EVNET_BUFFER_H	.\Debug\headers\evnet\buffer.h	2;"	d
 EVNET_BUFFER_H	.\evnet\buffer.h	2;"	d
-EVNET_TCPCV_H	.\evnet\tcpsv.h	2;"	d
+EVNET_FILELOG_H	.\Debug\headers\evnet\filelog.h	2;"	d
+EVNET_FILELOG_H	.\evnet\filelog.h	2;"	d
+EVNET_HTTP_H	.\Debug\headers\evplug\http.h	2;"	d
+EVNET_HTTP_H	.\evplug\http.h	2;"	d
+EVNET_TCPSV_H	.\Debug\headers\evnet\tcpsv.h	2;"	d
+EVNET_TCPSV_H	.\evnet\tcpsv.h	2;"	d
+EVNET_UDPSV_H	.\Debug\headers\evnet\udpsv.h	2;"	d
 EVNET_UDPSV_H	.\evnet\udpsv.h	2;"	d
-EVT_BASE	.\evbase\evt.h	18;"	d
-EVT_BASE_LIST	.\evbase\evt.h	25;"	d
-EVT_CALLBACK	.\evbase\evt.h	15;"	d
-EVT_READ	.\evbase\evt.h	113;"	d
-EVT_WRITE	.\evbase\evt.h	114;"	d
+EVT_BASE	.\Debug\headers\evbase\evt.h	21;"	d
+EVT_BASE	.\evbase\evt.h	21;"	d
+EVT_BASE_LIST	.\Debug\headers\evbase\evt.h	28;"	d
+EVT_BASE_LIST	.\evbase\evt.h	28;"	d
+EVT_CALLBACK	.\Debug\headers\evbase\evt.h	18;"	d
+EVT_CALLBACK	.\evbase\evt.h	18;"	d
+EVT_READ	.\Debug\headers\evbase\evt.h	116;"	d
+EVT_READ	.\evbase\evt.h	116;"	d
+EVT_WRITE	.\Debug\headers\evbase\evt.h	117;"	d
+EVT_WRITE	.\evbase\evt.h	117;"	d
+FDI_P	.\Debug\headers\evbase\evt.h	/^typedef struct fd_info* FDI_P;$/;"	t	typeref:struct:fd_info
 FDI_P	.\evbase\evt.h	/^typedef struct fd_info* FDI_P;$/;"	t	typeref:struct:fd_info
-FD_FLAG_CHANGE	.\evbase\evt.h	116;"	d
+FD_FLAG_CHANGE	.\Debug\headers\evbase\evt.h	119;"	d
+FD_FLAG_CHANGE	.\evbase\evt.h	119;"	d
+FILELOG_BUFSZ	.\Debug\headers\evnet\filelog.h	21;"	d
+FILELOG_BUFSZ	.\evnet\filelog.h	21;"	d
+FILELOG_BUFS_FREE	.\Debug\headers\evnet\filelog.h	20;"	d
+FILELOG_BUFS_FREE	.\evnet\filelog.h	20;"	d
+FILELOG_BUFS_SIZE	.\Debug\headers\evnet\filelog.h	19;"	d
+FILELOG_BUFS_SIZE	.\evnet\filelog.h	19;"	d
+FILELOG_STATUS_QUIT	.\Debug\headers\evnet\filelog.h	23;"	d
+FILELOG_STATUS_QUIT	.\evnet\filelog.h	23;"	d
+FILELOG_STATUS_RUN	.\Debug\headers\evnet\filelog.h	22;"	d
+FILELOG_STATUS_RUN	.\evnet\filelog.h	22;"	d
+HEAP_DELETE	.\Debug\headers\evbase\util.h	110;"	d
 HEAP_DELETE	.\evbase\util.h	110;"	d
+HEAP_FIX_DOWN	.\Debug\headers\evbase\util.h	75;"	d
 HEAP_FIX_DOWN	.\evbase\util.h	75;"	d
+HEAP_FIX_UP	.\Debug\headers\evbase\util.h	63;"	d
 HEAP_FIX_UP	.\evbase\util.h	63;"	d
+HEAP_INIT	.\Debug\headers\evbase\util.h	93;"	d
 HEAP_INIT	.\evbase\util.h	93;"	d
+HEAP_POP	.\Debug\headers\evbase\util.h	127;"	d
 HEAP_POP	.\evbase\util.h	127;"	d
+HEAP_PUSH	.\Debug\headers\evbase\util.h	122;"	d
 HEAP_PUSH	.\evbase\util.h	122;"	d
+HEAP_SORT	.\Debug\headers\evbase\util.h	99;"	d
 HEAP_SORT	.\evbase\util.h	99;"	d
+HEAP_UPDATE_POS	.\Debug\headers\evbase\util.h	60;"	d
 HEAP_UPDATE_POS	.\evbase\util.h	60;"	d
+LCHILD	.\Debug\headers\evbase\util.h	55;"	d
 LCHILD	.\evbase\util.h	55;"	d
+LOG_BUFSIZE	.\Debug\headers\evbase\log.h	30;"	d
 LOG_BUFSIZE	.\evbase\log.h	30;"	d
+LOG_DEBUG	.\Debug\headers\evbase\log.h	14;"	d
 LOG_DEBUG	.\evbase\log.h	14;"	d
+LOG_DEBUG_INDEX	.\Debug\headers\evbase\log.h	22;"	d
 LOG_DEBUG_INDEX	.\evbase\log.h	22;"	d
+LOG_ERROR	.\Debug\headers\evbase\log.h	16;"	d
 LOG_ERROR	.\evbase\log.h	16;"	d
+LOG_ERROR_INDEX	.\Debug\headers\evbase\log.h	24;"	d
 LOG_ERROR_INDEX	.\evbase\log.h	24;"	d
+LOG_FATAL	.\Debug\headers\evbase\log.h	17;"	d
 LOG_FATAL	.\evbase\log.h	17;"	d
+LOG_FATAL_INDEX	.\Debug\headers\evbase\log.h	25;"	d
 LOG_FATAL_INDEX	.\evbase\log.h	25;"	d
+LOG_INNER	.\Debug\headers\evbase\log.h	12;"	d
 LOG_INNER	.\evbase\log.h	12;"	d
+LOG_INNER_INDEX	.\Debug\headers\evbase\log.h	20;"	d
 LOG_INNER_INDEX	.\evbase\log.h	20;"	d
+LOG_LEVELS	.\Debug\headers\evbase\log.h	26;"	d
 LOG_LEVELS	.\evbase\log.h	26;"	d
+LOG_MASK	.\Debug\headers\evbase\log.h	18;"	d
 LOG_MASK	.\evbase\log.h	18;"	d
+LOG_TRACE	.\Debug\headers\evbase\log.h	13;"	d
 LOG_TRACE	.\evbase\log.h	13;"	d
+LOG_TRACE_INDEX	.\Debug\headers\evbase\log.h	21;"	d
 LOG_TRACE_INDEX	.\evbase\log.h	21;"	d
+LOG_WARN	.\Debug\headers\evbase\log.h	15;"	d
 LOG_WARN	.\evbase\log.h	15;"	d
+LOG_WARN_INDEX	.\Debug\headers\evbase\log.h	23;"	d
 LOG_WARN_INDEX	.\evbase\log.h	23;"	d
-LOOP_INIT_EVTSIZE	.\evbase\evt.h	130;"	d
-LOOP_INIT_FDS	.\evbase\evt.h	128;"	d
-LOOP_INIT_PENDSIZE	.\evbase\evt.h	129;"	d
-LOOP_INIT_POLLUS	.\evbase\evt.h	132;"	d
-LOOP_PRIORITY_MAX	.\evbase\evt.h	131;"	d
-LOOP_STATU_INIT	.\evbase\evt.h	121;"	d
-LOOP_STATU_PAUSE	.\evbase\evt.h	124;"	d
-LOOP_STATU_QUITING	.\evbase\evt.h	125;"	d
-LOOP_STATU_RUNNING	.\evbase\evt.h	123;"	d
-LOOP_STATU_STARTED	.\evbase\evt.h	122;"	d
-LOOP_STATU_STOP	.\evbase\evt.h	126;"	d
+LOOP_INIT_EVTSIZE	.\Debug\headers\evbase\evt.h	133;"	d
+LOOP_INIT_EVTSIZE	.\evbase\evt.h	133;"	d
+LOOP_INIT_FDS	.\Debug\headers\evbase\evt.h	131;"	d
+LOOP_INIT_FDS	.\evbase\evt.h	131;"	d
+LOOP_INIT_PENDSIZE	.\Debug\headers\evbase\evt.h	132;"	d
+LOOP_INIT_PENDSIZE	.\evbase\evt.h	132;"	d
+LOOP_INIT_POLLUS	.\Debug\headers\evbase\evt.h	135;"	d
+LOOP_INIT_POLLUS	.\evbase\evt.h	135;"	d
+LOOP_PRIORITY_MAX	.\Debug\headers\evbase\evt.h	134;"	d
+LOOP_PRIORITY_MAX	.\evbase\evt.h	134;"	d
+LOOP_STATU_INIT	.\Debug\headers\evbase\evt.h	124;"	d
+LOOP_STATU_INIT	.\evbase\evt.h	124;"	d
+LOOP_STATU_PAUSE	.\Debug\headers\evbase\evt.h	127;"	d
+LOOP_STATU_PAUSE	.\evbase\evt.h	127;"	d
+LOOP_STATU_QUITING	.\Debug\headers\evbase\evt.h	128;"	d
+LOOP_STATU_QUITING	.\evbase\evt.h	128;"	d
+LOOP_STATU_RUNNING	.\Debug\headers\evbase\evt.h	126;"	d
+LOOP_STATU_RUNNING	.\evbase\evt.h	126;"	d
+LOOP_STATU_STARTED	.\Debug\headers\evbase\evt.h	125;"	d
+LOOP_STATU_STARTED	.\evbase\evt.h	125;"	d
+LOOP_STATU_STOP	.\Debug\headers\evbase\evt.h	129;"	d
+LOOP_STATU_STOP	.\evbase\evt.h	129;"	d
+LOOP_STATU_WAITDESTROY	.\Debug\headers\evbase\evt.h	208;"	d
+LOOP_STATU_WAITDESTROY	.\evbase\evt.h	208;"	d
+LSHIFT	.\Debug\headers\evbase\util.h	54;"	d
 LSHIFT	.\evbase\util.h	54;"	d
+MICOR_SECOND	.\Debug\headers\evbase\util.h	138;"	d
 MICOR_SECOND	.\evbase\util.h	138;"	d
+POOL_STATU_INIT	.\Debug\headers\evbase\evt.h	202;"	d
+POOL_STATU_INIT	.\evbase\evt.h	202;"	d
+POOL_STATU_PAUSE	.\Debug\headers\evbase\evt.h	205;"	d
+POOL_STATU_PAUSE	.\evbase\evt.h	205;"	d
+POOL_STATU_QUITING	.\Debug\headers\evbase\evt.h	206;"	d
+POOL_STATU_QUITING	.\evbase\evt.h	206;"	d
+POOL_STATU_RUNNING	.\Debug\headers\evbase\evt.h	204;"	d
+POOL_STATU_RUNNING	.\evbase\evt.h	204;"	d
+POOL_STATU_STARTED	.\Debug\headers\evbase\evt.h	203;"	d
+POOL_STATU_STARTED	.\evbase\evt.h	203;"	d
+POOL_STATU_STOP	.\Debug\headers\evbase\evt.h	207;"	d
+POOL_STATU_STOP	.\evbase\evt.h	207;"	d
+RCHILD	.\Debug\headers\evbase\util.h	56;"	d
 RCHILD	.\evbase\util.h	56;"	d
+RSHIFT	.\Debug\headers\evbase\util.h	53;"	d
 RSHIFT	.\evbase\util.h	53;"	d
+SA	.\Debug\headers\evnet\tcpsv.h	/^typedef struct sockaddr_in SA;$/;"	t	typeref:struct:sockaddr_in
 SA	.\evnet\tcpsv.h	/^typedef struct sockaddr_in SA;$/;"	t	typeref:struct:sockaddr_in
-SA	.\evnet\udpsv.h	/^typedef struct sockaddr_in SA;$/;"	t	typeref:struct:sockaddr_in
+SA_P	.\Debug\headers\evnet\tcpsv.h	/^typedef struct sockaddr_in* SA_P;$/;"	t	typeref:struct:sockaddr_in
 SA_P	.\evnet\tcpsv.h	/^typedef struct sockaddr_in* SA_P;$/;"	t	typeref:struct:sockaddr_in
-SA_P	.\evnet\udpsv.h	/^typedef struct sockaddr_in* SA_P;$/;"	t	typeref:struct:sockaddr_in
+SECOND	.\Debug\headers\evbase\util.h	139;"	d
 SECOND	.\evbase\util.h	139;"	d
+STRING	.\Debug\headers\evbase\util.h	17;"	d
+STRING	.\Debug\headers\evbase\util.h	20;"	d
 STRING	.\evbase\util.h	17;"	d
 STRING	.\evbase\util.h	20;"	d
+TCPCLT_P	.\Debug\headers\evnet\tcpsv.h	/^typedef struct tcp_clt* TCPCLT_P;$/;"	t	typeref:struct:tcp_clt
 TCPCLT_P	.\evnet\tcpsv.h	/^typedef struct tcp_clt* TCPCLT_P;$/;"	t	typeref:struct:tcp_clt
+TCPSRV_P	.\Debug\headers\evnet\tcpsv.h	/^typedef struct tcp_srv* TCPSRV_P;$/;"	t	typeref:struct:tcp_srv
 TCPSRV_P	.\evnet\tcpsv.h	/^typedef struct tcp_srv* TCPSRV_P;$/;"	t	typeref:struct:tcp_srv
-TCP_CLIENT_WAITCLS	.\evnet\tcpsv.h	27;"	d
-TCP_DEFAULT_FLAG	.\evnet\tcpsv.h	20;"	d
-TCP_SERVER_ACBLOCK	.\evnet\tcpsv.h	25;"	d
-TCP_SERVER_BREATH	.\evnet\tcpsv.h	22;"	d
-TCP_SERVER_LOOPS	.\evnet\tcpsv.h	23;"	d
-TCP_SERVER_NOREUSE	.\evnet\tcpsv.h	24;"	d
-THREAD_FUNCTION	.\evbase\thread.h	90;"	d
-THREAD_ID	.\evbase\thread.h	13;"	d
-THREAD_RETURN	.\evbase\thread.h	91;"	d
-TIMERP_CMP	.\evbase\evt.h	98;"	d
+TCP_CLIENT_WAITCLS	.\Debug\headers\evnet\tcpsv.h	25;"	d
+TCP_CLIENT_WAITCLS	.\evnet\tcpsv.h	25;"	d
+TCP_DEFAULT_FLAG	.\Debug\headers\evnet\tcpsv.h	18;"	d
+TCP_DEFAULT_FLAG	.\evnet\tcpsv.h	18;"	d
+TCP_SERVER_ACBLOCK	.\Debug\headers\evnet\tcpsv.h	23;"	d
+TCP_SERVER_ACBLOCK	.\evnet\tcpsv.h	23;"	d
+TCP_SERVER_BREATH	.\Debug\headers\evnet\tcpsv.h	20;"	d
+TCP_SERVER_BREATH	.\evnet\tcpsv.h	20;"	d
+TCP_SERVER_LOOPS	.\Debug\headers\evnet\tcpsv.h	21;"	d
+TCP_SERVER_LOOPS	.\evnet\tcpsv.h	21;"	d
+TCP_SERVER_NOREUSE	.\Debug\headers\evnet\tcpsv.h	22;"	d
+TCP_SERVER_NOREUSE	.\evnet\tcpsv.h	22;"	d
+THREAD_FUNCTION	.\Debug\headers\evbase\thread.h	92;"	d
+THREAD_FUNCTION	.\evbase\evt.c	/^static THREAD_FUNCTION(new_loop_thread, p) {$/;"	f	file:
+THREAD_FUNCTION	.\evbase\thread.h	92;"	d
+THREAD_FUNCTION	.\evnet\filelog.c	/^static THREAD_FUNCTION(flog_backend, p) {$/;"	f	file:
+THREAD_ID	.\Debug\headers\evbase\thread.h	15;"	d
+THREAD_ID	.\evbase\thread.h	15;"	d
+THREAD_RETURN	.\Debug\headers\evbase\thread.h	93;"	d
+THREAD_RETURN	.\evbase\thread.h	93;"	d
+TIMERP_CMP	.\Debug\headers\evbase\evt.h	101;"	d
+TIMERP_CMP	.\evbase\evt.h	101;"	d
+UDPSRV_P	.\Debug\headers\evnet\udpsv.h	/^typedef struct udp_srv* UDPSRV_P;$/;"	t	typeref:struct:udp_srv
 UDPSRV_P	.\evnet\udpsv.h	/^typedef struct udp_srv* UDPSRV_P;$/;"	t	typeref:struct:udp_srv
-UDP_BUFSZIE	.\evnet\udpsv.h	17;"	d
-UDP_DEFAULT_FLAG	.\evnet\udpsv.h	19;"	d
-UDP_SERVER_BLOCK	.\evnet\udpsv.h	21;"	d
-UDP_SERVER_NOREUSE	.\evnet\udpsv.h	20;"	d
+UDP_BUFSZIE	.\Debug\headers\evnet\udpsv.h	14;"	d
+UDP_BUFSZIE	.\evnet\udpsv.h	14;"	d
+UDP_DEFAULT_FLAG	.\Debug\headers\evnet\udpsv.h	16;"	d
+UDP_DEFAULT_FLAG	.\evnet\udpsv.h	16;"	d
+UDP_SERVER_BLOCK	.\Debug\headers\evnet\udpsv.h	18;"	d
+UDP_SERVER_BLOCK	.\evnet\udpsv.h	18;"	d
+UDP_SERVER_NOREUSE	.\Debug\headers\evnet\udpsv.h	17;"	d
+UDP_SERVER_NOREUSE	.\evnet\udpsv.h	17;"	d
+add_one	.\Debug\headers\evbase\util.h	31;"	d
 add_one	.\evbase\util.h	31;"	d
+addr	.\Debug\headers\evnet\tcpsv.h	/^    SA addr;$/;"	m	struct:tcp_clt
+addr	.\Debug\headers\evnet\tcpsv.h	/^    SA addr;$/;"	m	struct:tcp_srv
+addr	.\Debug\headers\evnet\udpsv.h	/^    SA addr;$/;"	m	struct:udp_srv
 addr	.\evnet\tcpsv.h	/^    SA addr;$/;"	m	struct:tcp_clt
 addr	.\evnet\tcpsv.h	/^    SA addr;$/;"	m	struct:tcp_srv
 addr	.\evnet\udpsv.h	/^    SA addr;$/;"	m	struct:udp_srv
+adjust_between	.\Debug\headers\evbase\util.h	47;"	d
 adjust_between	.\evbase\util.h	47;"	d
+aflog	.\evnet\filelog.c	/^static struct async_filelog *aflog;$/;"	v	typeref:struct:async_filelog	file:
+alloc	.\Debug\headers\evbase\thread.h	/^    void *(*alloc)(int);$/;"	m	struct:cond_ops
+alloc	.\Debug\headers\evbase\thread.h	/^    void *(*alloc)(int);$/;"	m	struct:lock_ops
 alloc	.\evbase\thread.h	/^    void *(*alloc)(int);$/;"	m	struct:cond_ops
 alloc	.\evbase\thread.h	/^    void *(*alloc)(int);$/;"	m	struct:lock_ops
+arg	.\Debug\headers\evbase\util.h	/^    void *arg;$/;"	m	struct:event_param
+arg	.\evbase\util.h	/^    void *arg;$/;"	m	struct:event_param
+async_filelog	.\Debug\headers\evnet\filelog.h	/^struct async_filelog {$/;"	s
+async_filelog	.\evnet\filelog.h	/^struct async_filelog {$/;"	s
+asyncq	.\Debug\headers\evbase\evt.h	/^    struct event_param* asyncq;$/;"	m	struct:evt_loop	typeref:struct:evt_loop::event_param
+asyncq	.\evbase\evt.h	/^    struct event_param* asyncq;$/;"	m	struct:evt_loop	typeref:struct:evt_loop::event_param
+asyncq_cnt	.\Debug\headers\evbase\evt.h	/^    int asyncq_cnt;$/;"	m	struct:evt_loop
+asyncq_cnt	.\evbase\evt.h	/^    int asyncq_cnt;$/;"	m	struct:evt_loop
+asyncq_lock	.\Debug\headers\evbase\evt.h	/^    lock_t asyncq_lock;$/;"	m	struct:evt_loop
+asyncq_lock	.\evbase\evt.h	/^    lock_t asyncq_lock;$/;"	m	struct:evt_loop
+asyncq_size	.\Debug\headers\evbase\evt.h	/^    int asyncq_size;$/;"	m	struct:evt_loop
+asyncq_size	.\evbase\evt.h	/^    int asyncq_size;$/;"	m	struct:evt_loop
+atomic32	.\Debug\headers\evbase\thread.h	/^typedef volatile int32_t atomic32;$/;"	t
 atomic32	.\evbase\thread.h	/^typedef volatile int32_t atomic32;$/;"	t
+atomic64	.\Debug\headers\evbase\thread.h	/^typedef volatile int64_t atomic64;$/;"	t
 atomic64	.\evbase\thread.h	/^typedef volatile int64_t atomic64;$/;"	t
-atomic_add_get	.\evbase\thread.h	23;"	d
-atomic_decrement	.\evbase\thread.h	25;"	d
-atomic_get	.\evbase\thread.h	21;"	d
-atomic_get_add	.\evbase\thread.h	22;"	d
-atomic_increment	.\evbase\thread.h	24;"	d
+atomic_add_get	.\Debug\headers\evbase\thread.h	25;"	d
+atomic_add_get	.\evbase\thread.h	25;"	d
+atomic_decrement	.\Debug\headers\evbase\thread.h	27;"	d
+atomic_decrement	.\evbase\thread.h	27;"	d
+atomic_get	.\Debug\headers\evbase\thread.h	23;"	d
+atomic_get	.\evbase\thread.h	23;"	d
+atomic_get_add	.\Debug\headers\evbase\thread.h	24;"	d
+atomic_get_add	.\evbase\thread.h	24;"	d
+atomic_increment	.\Debug\headers\evbase\thread.h	26;"	d
+atomic_increment	.\evbase\thread.h	26;"	d
+buf	.\Debug\headers\evnet\buffer.h	/^    char *buf;$/;"	m	struct:buffer
 buf	.\evnet\buffer.h	/^    char *buf;$/;"	m	struct:buffer
+buff_clear	.\evnet\buffer.c	/^void buff_clear(BUF_P buf) {$/;"	f
 buff_expand	.\evnet\buffer.c	/^int buff_expand(BUF_P buf, int size) {$/;"	f
 buff_fd_read	.\evnet\buffer.c	/^int buff_fd_read(BUF_P buf, int fd) {$/;"	f
 buff_fd_write	.\evnet\buffer.c	/^int buff_fd_write(BUF_P buf, int fd) {$/;"	f
 buff_free	.\evnet\buffer.c	/^void buff_free(BUF_P buf) {$/;"	f
-buff_init	.\evnet\buffer.c	/^void buff_init(BUF_P buf) {$/;"	f
+buff_init	.\evnet\buffer.c	/^void buff_init(BUF_P buf, int size) {$/;"	f
 buff_new	.\evnet\buffer.c	/^BUF_P buff_new() {$/;"	f
-buff_peak	.\evnet\buffer.c	/^const char* buff_peak(BUF_P buf) {$/;"	f
+buff_new_size	.\evnet\buffer.c	/^BUF_P buff_new_size(int size) {$/;"	f
+buff_peek	.\evnet\buffer.c	/^const char* buff_peek(BUF_P buf) {$/;"	f
 buff_read	.\evnet\buffer.c	/^int buff_read(BUF_P buf, int len, char* dst, int dstlen) {$/;"	f
 buff_readall	.\evnet\buffer.c	/^int buff_readall(BUF_P buf, char* dst, int dstlen) {$/;"	f
 buff_write	.\evnet\buffer.c	/^int buff_write(BUF_P buf, const char* str, int len) {$/;"	f
+buffer	.\Debug\headers\evnet\buffer.h	/^struct buffer {$/;"	s
 buffer	.\evnet\buffer.h	/^struct buffer {$/;"	s
 cached_time	.\evbase\util.c	/^__thread int64_t cached_time = 0;$/;"	v
+cachetime_to_string	.\evbase\util.c	/^void cachetime_to_string(char* buf, int len) {$/;"	f
+check_and_expand_array	.\Debug\headers\evbase\util.h	34;"	d
 check_and_expand_array	.\evbase\util.h	34;"	d
+clt_io	.\Debug\headers\evnet\tcpsv.h	/^    struct evt_io* clt_io[2];$/;"	m	struct:tcp_clt	typeref:struct:tcp_clt::evt_io
 clt_io	.\evnet\tcpsv.h	/^    struct evt_io* clt_io[2];$/;"	m	struct:tcp_clt	typeref:struct:tcp_clt::evt_io
+cltcnt	.\Debug\headers\evnet\tcpsv.h	/^    atomic32 cltcnt;$/;"	m	struct:tcp_srv
 cltcnt	.\evnet\tcpsv.h	/^    atomic32 cltcnt;$/;"	m	struct:tcp_srv
-cond_alloc	.\evbase\thread.h	79;"	d
-cond_alloc_attr	.\evbase\thread.h	70;"	d
-cond_broadcast	.\evbase\thread.h	82;"	d
-cond_free	.\evbase\thread.h	80;"	d
-cond_free_attr	.\evbase\thread.h	72;"	d
+cond_alloc	.\Debug\headers\evbase\thread.h	81;"	d
+cond_alloc	.\evbase\thread.h	81;"	d
+cond_alloc_attr	.\Debug\headers\evbase\thread.h	72;"	d
+cond_alloc_attr	.\evbase\thread.h	72;"	d
+cond_broadcast	.\Debug\headers\evbase\thread.h	84;"	d
+cond_broadcast	.\evbase\thread.h	84;"	d
+cond_free	.\Debug\headers\evbase\thread.h	82;"	d
+cond_free	.\evbase\thread.h	82;"	d
+cond_free_attr	.\Debug\headers\evbase\thread.h	74;"	d
+cond_free_attr	.\evbase\thread.h	74;"	d
+cond_ops	.\Debug\headers\evbase\thread.h	/^struct cond_ops {$/;"	s
 cond_ops	.\evbase\thread.h	/^struct cond_ops {$/;"	s
-cond_signal	.\evbase\thread.h	81;"	d
-cond_signal_attr	.\evbase\thread.h	74;"	d
+cond_signal	.\Debug\headers\evbase\thread.h	83;"	d
+cond_signal	.\evbase\thread.h	83;"	d
+cond_signal_attr	.\Debug\headers\evbase\thread.h	76;"	d
+cond_signal_attr	.\evbase\thread.h	76;"	d
+cond_t	.\Debug\headers\evbase\thread.h	/^typedef void* cond_t;$/;"	t
 cond_t	.\evbase\thread.h	/^typedef void* cond_t;$/;"	t
-cond_wait	.\evbase\thread.h	83;"	d
-cond_wait_attr	.\evbase\thread.h	76;"	d
-cond_wait_timed	.\evbase\thread.h	84;"	d
+cond_wait	.\Debug\headers\evbase\thread.h	85;"	d
+cond_wait	.\evbase\thread.h	85;"	d
+cond_wait_attr	.\Debug\headers\evbase\thread.h	78;"	d
+cond_wait_attr	.\evbase\thread.h	78;"	d
+cond_wait_timed	.\Debug\headers\evbase\thread.h	86;"	d
+cond_wait_timed	.\evbase\thread.h	86;"	d
+condname	.\Debug\headers\evbase\thread.h	/^    const char* condname;$/;"	m	struct:cond_ops
 condname	.\evbase\thread.h	/^    const char* condname;$/;"	m	struct:cond_ops
 cr_thread_id	.\evbase\thread.c	/^__thread int cr_thread_id = 0;$/;"	v
 cr_thread_name	.\evbase\thread.c	/^__thread const char* cr_thread_name = "unknow";$/;"	v
+data	.\Debug\headers\evnet\tcpsv.h	/^    void *data;$/;"	m	struct:tcp_clt
+data	.\Debug\headers\evnet\tcpsv.h	/^    void *data;$/;"	m	struct:tcp_srv
+data	.\evnet\tcpsv.h	/^    void *data;$/;"	m	struct:tcp_clt
+data	.\evnet\tcpsv.h	/^    void *data;$/;"	m	struct:tcp_srv
 default_log_if	.\evbase\log.c	/^struct log_if *default_log_if = &default_log_if_s;$/;"	v	typeref:struct:log_if
 default_log_if_s	.\evbase\log.c	/^static struct log_if default_log_if_s = {$/;"	v	typeref:struct:log_if	file:
-e	.\main.c	/^struct evt_io e, e2;$/;"	v	typeref:struct:evt_io
-e2	.\main.c	/^struct evt_io e, e2;$/;"	v	typeref:struct:
-ea1	.\main.c	/^struct evt_after ea1, ea2;$/;"	v	typeref:struct:evt_after
-ea2	.\main.c	/^struct evt_after ea1, ea2;$/;"	v	typeref:struct:
-eb1	.\main.c	/^struct evt_before eb1, eb2;$/;"	v	typeref:struct:evt_before
-eb2	.\main.c	/^struct evt_before eb1, eb2;$/;"	v	typeref:struct:
+default_pool_get_next_loop	.\evbase\evt.c	/^static EL_P default_pool_get_next_loop(EP_P pool) {$/;"	f	file:
+empty_ev	.\Debug\headers\evbase\evt.h	/^    struct evt_before *empty_ev;   \/* be used when stop a pending event *\/$/;"	m	struct:evt_loop	typeref:struct:evt_loop::evt_before
 empty_ev	.\evbase\evt.h	/^    struct evt_before *empty_ev;   \/* be used when stop a pending event *\/$/;"	m	struct:evt_loop	typeref:struct:evt_loop::evt_before
+emptybuf_cnt	.\Debug\headers\evnet\filelog.h	/^    int emptybuf_cnt;$/;"	m	struct:async_filelog
+emptybuf_cnt	.\evnet\filelog.h	/^    int emptybuf_cnt;$/;"	m	struct:async_filelog
+emptybuf_size	.\Debug\headers\evnet\filelog.h	/^    int emptybuf_size;$/;"	m	struct:async_filelog
+emptybuf_size	.\evnet\filelog.h	/^    int emptybuf_size;$/;"	m	struct:async_filelog
+emptybufs	.\Debug\headers\evnet\filelog.h	/^    BUF_P *emptybufs;$/;"	m	struct:async_filelog
+emptybufs	.\evnet\filelog.h	/^    BUF_P *emptybufs;$/;"	m	struct:async_filelog
 epoll_destroy	.\evbase\epoll.c	/^void epoll_destroy(EL_P loop) {$/;"	f
 epoll_dispatch	.\evbase\epoll.c	/^int epoll_dispatch(EL_P loop) {$/;"	f
 epoll_init	.\evbase\epoll.c	/^void *epoll_init(EL_P loop) {$/;"	f
 epoll_update	.\evbase\epoll.c	/^int epoll_update(EL_P loop, int fd, uint8_t oev, uint8_t nev) {$/;"	f
-et1	.\main.c	/^struct evt_timer et1, et2, et3;$/;"	v	typeref:struct:evt_timer
-et2	.\main.c	/^struct evt_timer et1, et2, et3;$/;"	v	typeref:struct:
-et3	.\main.c	/^struct evt_timer et1, et2, et3;$/;"	v	typeref:struct:
+event	.\Debug\headers\evbase\epoll.h	/^    struct epoll_event *event;$/;"	m	struct:evt_epoll	typeref:struct:evt_epoll::epoll_event
+event	.\Debug\headers\evbase\evt.h	/^    uint8_t event;$/;"	m	struct:evt_io
 event	.\evbase\epoll.h	/^    struct epoll_event *event;$/;"	m	struct:evt_epoll	typeref:struct:evt_epoll::epoll_event
 event	.\evbase\evt.h	/^    uint8_t event;$/;"	m	struct:evt_io
+event_param	.\Debug\headers\evbase\util.h	/^struct event_param {$/;"	s
+event_param	.\evbase\util.h	/^struct event_param {$/;"	s
+eventfd	.\Debug\headers\evbase\evt.h	/^    int eventfd;$/;"	m	struct:evt_loop
+eventfd	.\evbase\evt.h	/^    int eventfd;$/;"	m	struct:evt_loop
+eventio	.\Debug\headers\evbase\evt.h	/^    struct evt_io* eventio;$/;"	m	struct:evt_loop	typeref:struct:evt_loop::evt_io
+eventio	.\evbase\evt.h	/^    struct evt_io* eventio;$/;"	m	struct:evt_loop	typeref:struct:evt_loop::evt_io
+events	.\Debug\headers\evbase\evt.h	/^    uint8_t events;$/;"	m	struct:fd_info
 events	.\evbase\evt.h	/^    uint8_t events;$/;"	m	struct:fd_info
+evt_after	.\Debug\headers\evbase\evt.h	/^struct evt_after {$/;"	s
 evt_after	.\evbase\evt.h	/^struct evt_after {$/;"	s
-evt_after_init	.\evbase\evt.h	87;"	d
+evt_after_init	.\Debug\headers\evbase\evt.h	90;"	d
+evt_after_init	.\evbase\evt.h	90;"	d
 evt_after_start	.\evbase\evt.c	/^void evt_after_start(EL_P loop, struct evt_after* ev) {$/;"	f
 evt_after_stop	.\evbase\evt.c	/^void evt_after_stop(EL_P loop, struct evt_after* ev) {$/;"	f
+evt_afters_head	.\Debug\headers\evbase\evt.h	/^    EBL_P evt_afters_head;$/;"	m	struct:evt_loop
 evt_afters_head	.\evbase\evt.h	/^    EBL_P evt_afters_head;$/;"	m	struct:evt_loop
 evt_append_pending	.\evbase\evt.c	/^void evt_append_pending(EL_P loop, void *w) {$/;"	f
+evt_base	.\Debug\headers\evbase\evt.h	/^struct evt_base {$/;"	s
 evt_base	.\evbase\evt.h	/^struct evt_base {$/;"	s
-evt_base_init	.\evbase\evt.h	65;"	d
+evt_base_init	.\Debug\headers\evbase\evt.h	68;"	d
+evt_base_init	.\evbase\evt.h	68;"	d
+evt_base_list	.\Debug\headers\evbase\evt.h	/^struct evt_base_list {$/;"	s
 evt_base_list	.\evbase\evt.h	/^struct evt_base_list {$/;"	s
+evt_before	.\Debug\headers\evbase\evt.h	/^struct evt_before {$/;"	s
 evt_before	.\evbase\evt.h	/^struct evt_before {$/;"	s
-evt_before_init	.\evbase\evt.h	86;"	d
+evt_before_init	.\Debug\headers\evbase\evt.h	89;"	d
+evt_before_init	.\evbase\evt.h	89;"	d
 evt_before_start	.\evbase\evt.c	/^void evt_before_start(EL_P loop, struct evt_before* ev) {$/;"	f
 evt_before_stop	.\evbase\evt.c	/^void evt_before_stop(EL_P loop, struct evt_before* ev) {$/;"	f
+evt_befores_head	.\Debug\headers\evbase\evt.h	/^    EBL_P evt_befores_head;$/;"	m	struct:evt_loop
 evt_befores_head	.\evbase\evt.h	/^    EBL_P evt_befores_head;$/;"	m	struct:evt_loop
+evt_do_loop_wakeup	.\evbase\evt.c	/^static void evt_do_loop_wakeup(EL_P loop, struct evt_io* ev) {$/;"	f	file:
+evt_epoll	.\Debug\headers\evbase\epoll.h	/^struct evt_epoll {$/;"	s
 evt_epoll	.\evbase\epoll.h	/^struct evt_epoll {$/;"	s
 evt_execute_pending	.\evbase\evt.c	/^void evt_execute_pending(EL_P loop) {$/;"	f
 evt_fd_change	.\evbase\evt.c	/^void evt_fd_change(EL_P loop, int fd) {$/;"	f
 evt_fd_changes_update	.\evbase\evt.c	/^void evt_fd_changes_update(EL_P loop) {$/;"	f
+evt_io	.\Debug\headers\evbase\evt.h	/^struct evt_io{$/;"	s
 evt_io	.\evbase\evt.h	/^struct evt_io{$/;"	s
-evt_io_init	.\evbase\evt.h	74;"	d
+evt_io_init	.\Debug\headers\evbase\evt.h	77;"	d
+evt_io_init	.\evbase\evt.h	77;"	d
 evt_io_start	.\evbase\evt.c	/^void evt_io_start(EL_P loop, struct evt_io* w) {$/;"	f
 evt_io_stop	.\evbase\evt.c	/^void evt_io_stop(EL_P loop, struct evt_io *ev) {$/;"	f
 evt_list_add	.\evbase\evt.c	/^static void evt_list_add(EBL_P* head, EBL_P elm) {$/;"	f	file:
 evt_list_add_tail	.\evbase\evt.c	/^static void evt_list_add_tail(EBL_P* head, EBL_P elm) {$/;"	f	file:
 evt_list_del	.\evbase\evt.c	/^static void evt_list_del(EBL_P* head, EBL_P elm) {$/;"	f	file:
+evt_loop	.\Debug\headers\evbase\evt.h	/^struct evt_loop {$/;"	s
 evt_loop	.\evbase\evt.h	/^struct evt_loop {$/;"	s
+evt_loop_asyncq_append	.\evbase\evt.c	/^void evt_loop_asyncq_append(EL_P loop, struct event_param* evp) {$/;"	f
 evt_loop_destroy	.\evbase\evt.c	/^int evt_loop_destroy(EL_P loop) {$/;"	f
 evt_loop_init	.\evbase\evt.c	/^EL_P evt_loop_init() {$/;"	f
 evt_loop_init_with_flag	.\evbase\evt.c	/^EL_P evt_loop_init_with_flag(int flag) {$/;"	f
 evt_loop_quit	.\evbase\evt.c	/^int evt_loop_quit(EL_P loop) {$/;"	f
 evt_loop_run	.\evbase\evt.c	/^int evt_loop_run(EL_P loop) {$/;"	f
+evt_pool	.\Debug\headers\evbase\evt.h	/^struct evt_pool {$/;"	s
 evt_pool	.\evbase\evt.h	/^struct evt_pool {$/;"	s
-evt_set_data	.\evbase\evt.h	63;"	d
+evt_pool_destroy	.\evbase\evt.c	/^void evt_pool_destroy(EP_P pool) {$/;"	f
+evt_pool_init	.\evbase\evt.c	/^EP_P evt_pool_init(int num) {$/;"	f
+evt_pool_init_with_flag	.\evbase\evt.c	/^EP_P evt_pool_init_with_flag(int num, int flag) {$/;"	f
+evt_pool_run	.\evbase\evt.c	/^int evt_pool_run(EP_P pool) {$/;"	f
+evt_set_data	.\Debug\headers\evbase\evt.h	66;"	d
+evt_set_data	.\evbase\evt.h	66;"	d
+evt_timer	.\Debug\headers\evbase\evt.h	/^struct evt_timer{$/;"	s
 evt_timer	.\evbase\evt.h	/^struct evt_timer{$/;"	s
-evt_timer_init	.\evbase\evt.h	80;"	d
+evt_timer_init	.\Debug\headers\evbase\evt.h	83;"	d
+evt_timer_init	.\evbase\evt.h	83;"	d
 evt_timer_start	.\evbase\evt.c	/^void evt_timer_start(EL_P loop, struct evt_timer* ev) {$/;"	f
 evt_timer_stop	.\evbase\evt.c	/^void evt_timer_stop(EL_P loop, struct evt_timer* ev) {$/;"	f
+fd	.\Debug\headers\evbase\epoll.h	/^    int fd;$/;"	m	struct:evt_epoll
+fd	.\Debug\headers\evbase\evt.h	/^    int fd;$/;"	m	struct:evt_io
+fd	.\Debug\headers\evnet\tcpsv.h	/^    int fd;$/;"	m	struct:tcp_clt
+fd	.\Debug\headers\evnet\tcpsv.h	/^    int fd;$/;"	m	struct:tcp_srv
+fd	.\Debug\headers\evnet\udpsv.h	/^    int fd;$/;"	m	struct:udp_srv
 fd	.\evbase\epoll.h	/^    int fd;$/;"	m	struct:evt_epoll
 fd	.\evbase\evt.h	/^    int fd;$/;"	m	struct:evt_io
 fd	.\evnet\tcpsv.h	/^    int fd;$/;"	m	struct:tcp_clt
 fd	.\evnet\tcpsv.h	/^    int fd;$/;"	m	struct:tcp_srv
 fd	.\evnet\udpsv.h	/^    int fd;$/;"	m	struct:udp_srv
 fd_cloexec	.\evbase\util.c	/^int fd_cloexec(int fd) {$/;"	f
+fd_info	.\Debug\headers\evbase\evt.h	/^struct fd_info {$/;"	s
 fd_info	.\evbase\evt.h	/^struct fd_info {$/;"	s
 fd_nonblock	.\evbase\util.c	/^int fd_nonblock(int fd) {$/;"	f
 fd_reuse	.\evbase\util.c	/^int fd_reuse(int fd) {$/;"	f
+fds	.\Debug\headers\evbase\evt.h	/^    FDI_P fds;$/;"	m	struct:evt_loop
 fds	.\evbase\evt.h	/^    FDI_P fds;$/;"	m	struct:evt_loop
+fds_mod	.\Debug\headers\evbase\evt.h	/^    int *fds_mod;$/;"	m	struct:evt_loop
 fds_mod	.\evbase\evt.h	/^    int *fds_mod;$/;"	m	struct:evt_loop
+fds_mod_cnt	.\Debug\headers\evbase\evt.h	/^    int fds_mod_cnt;$/;"	m	struct:evt_loop
 fds_mod_cnt	.\evbase\evt.h	/^    int fds_mod_cnt;$/;"	m	struct:evt_loop
+fds_mod_size	.\Debug\headers\evbase\evt.h	/^    int fds_mod_size;$/;"	m	struct:evt_loop
 fds_mod_size	.\evbase\evt.h	/^    int fds_mod_size;$/;"	m	struct:evt_loop
+fds_size	.\Debug\headers\evbase\evt.h	/^    int fds_size;$/;"	m	struct:evt_loop
 fds_size	.\evbase\evt.h	/^    int fds_size;$/;"	m	struct:evt_loop
+feature	.\Debug\headers\evbase\epoll.h	/^    int feature;$/;"	m	struct:evt_epoll
+feature	.\Debug\headers\evbase\thread.h	/^    int feature;$/;"	m	struct:cond_ops
+feature	.\Debug\headers\evbase\thread.h	/^    int feature;$/;"	m	struct:lock_ops
 feature	.\evbase\epoll.h	/^    int feature;$/;"	m	struct:evt_epoll
 feature	.\evbase\thread.h	/^    int feature;$/;"	m	struct:cond_ops
 feature	.\evbase\thread.h	/^    int feature;$/;"	m	struct:lock_ops
+file_log_if	.\evnet\filelog.c	/^static struct log_if file_log_if = {$/;"	v	typeref:struct:log_if	file:
+filelog_destroy	.\evnet\filelog.c	/^void filelog_destroy() {$/;"	f
+filelog_init	.\evnet\filelog.c	/^int filelog_init(const char *filepath) {$/;"	f
+filelog_quit	.\evnet\filelog.c	/^void filelog_quit() {$/;"	f
+findrnrn	.\evplug\http.c	/^int findrnrn(char *str, int len){$/;"	f
+flag	.\Debug\headers\evbase\evt.h	/^    uint8_t flag;$/;"	m	struct:fd_info
+flag	.\Debug\headers\evnet\tcpsv.h	/^    int flag;$/;"	m	struct:tcp_srv
+flag	.\Debug\headers\evnet\tcpsv.h	/^    uint8_t flag;$/;"	m	struct:tcp_clt
+flag	.\Debug\headers\evnet\udpsv.h	/^    int flag;$/;"	m	struct:udp_srv
 flag	.\evbase\evt.h	/^    uint8_t flag;$/;"	m	struct:fd_info
 flag	.\evnet\tcpsv.h	/^    int flag;$/;"	m	struct:tcp_srv
 flag	.\evnet\tcpsv.h	/^    uint8_t flag;$/;"	m	struct:tcp_clt
 flag	.\evnet\udpsv.h	/^    int flag;$/;"	m	struct:udp_srv
+flog_cond	.\Debug\headers\evnet\filelog.h	/^    cond_t flog_cond;$/;"	m	struct:async_filelog
+flog_cond	.\evnet\filelog.h	/^    cond_t flog_cond;$/;"	m	struct:async_filelog
+flog_lock	.\Debug\headers\evnet\filelog.h	/^    lock_t flog_lock;$/;"	m	struct:async_filelog
+flog_lock	.\evnet\filelog.h	/^    lock_t flog_lock;$/;"	m	struct:async_filelog
+flush_cb	.\Debug\headers\evbase\log.h	/^    void (*flush_cb)();$/;"	m	struct:log_if
 flush_cb	.\evbase\log.h	/^    void (*flush_cb)();$/;"	m	struct:log_if
+fp	.\Debug\headers\evnet\filelog.h	/^    FILE *fp;$/;"	m	struct:async_filelog
+fp	.\evnet\filelog.h	/^    FILE *fp;$/;"	m	struct:async_filelog
+free	.\Debug\headers\evbase\thread.h	/^    void (*free)(void *, int);$/;"	m	struct:cond_ops
+free	.\Debug\headers\evbase\thread.h	/^    void (*free)(void *, int);$/;"	m	struct:lock_ops
 free	.\evbase\thread.h	/^    void (*free)(void *, int);$/;"	m	struct:cond_ops
 free	.\evbase\thread.h	/^    void (*free)(void *, int);$/;"	m	struct:lock_ops
+fullbuf_cnt	.\Debug\headers\evnet\filelog.h	/^    int fullbuf_cnt;$/;"	m	struct:async_filelog
+fullbuf_cnt	.\evnet\filelog.h	/^    int fullbuf_cnt;$/;"	m	struct:async_filelog
+fullbuf_size	.\Debug\headers\evnet\filelog.h	/^    int fullbuf_size;$/;"	m	struct:async_filelog
+fullbuf_size	.\evnet\filelog.h	/^    int fullbuf_size;$/;"	m	struct:async_filelog
+fullbufs	.\Debug\headers\evnet\filelog.h	/^    BUF_P *fullbufs;$/;"	m	struct:async_filelog
+fullbufs	.\evnet\filelog.h	/^    BUF_P *fullbufs;$/;"	m	struct:async_filelog
 get_cached_time	.\evbase\util.c	/^int64_t get_cached_time() {$/;"	f
+get_default_logif_level_flag	.\Debug\headers\evbase\log.h	63;"	d
 get_default_logif_level_flag	.\evbase\log.h	63;"	d
+get_logif_level_flag	.\Debug\headers\evbase\log.h	45;"	d
 get_logif_level_flag	.\evbase\log.h	45;"	d
-get_next_loop	.\evnet\tcpsv.h	/^    EL_P (*get_next_loop)(TCPSRV_P);$/;"	m	struct:tcp_srv
+get_next_loop	.\Debug\headers\evbase\evt.h	/^    EL_P (*get_next_loop)(EP_P);$/;"	m	struct:evt_pool
+get_next_loop	.\Debug\headers\evnet\tcpsv.h	/^    EL_P (*get_next_loop)(EP_P);$/;"	m	struct:tcp_srv
+get_next_loop	.\evbase\evt.h	/^    EL_P (*get_next_loop)(EP_P);$/;"	m	struct:evt_pool
+get_next_loop	.\evnet\tcpsv.h	/^    EL_P (*get_next_loop)(EP_P);$/;"	m	struct:tcp_srv
+get_time_us	.\evbase\util.c	/^int64_t get_time_us() {$/;"	f
+head	.\Debug\headers\evbase\evt.h	/^    EBL_P head;$/;"	m	struct:fd_info
 head	.\evbase\evt.h	/^    EBL_P head;$/;"	m	struct:fd_info
+heap_pos	.\Debug\headers\evbase\evt.h	/^    int heap_pos;$/;"	m	struct:evt_timer
 heap_pos	.\evbase\evt.h	/^    int heap_pos;$/;"	m	struct:evt_timer
+http_start	.\evplug\http.c	/^int http_start(int port, int thread) {$/;"	f
 ignore_sigpipe	.\evbase\util.c	/^int ignore_sigpipe() {$/;"	f
+inbuf	.\Debug\headers\evnet\tcpsv.h	/^    BUF_P inbuf;$/;"	m	struct:tcp_clt
 inbuf	.\evnet\tcpsv.h	/^    BUF_P inbuf;$/;"	m	struct:tcp_clt
+init_array_noop	.\Debug\headers\evbase\util.h	33;"	d
 init_array_noop	.\evbase\util.h	33;"	d
+init_array_zero	.\Debug\headers\evbase\util.h	32;"	d
 init_array_zero	.\evbase\util.h	32;"	d
+level_cb	.\Debug\headers\evbase\log.h	/^    void (*level_cb[LOG_LEVELS])();$/;"	m	struct:log_if
 level_cb	.\evbase\log.h	/^    void (*level_cb[LOG_LEVELS])();$/;"	m	struct:log_if
+level_flag	.\Debug\headers\evbase\log.h	/^    uint8_t level_flag;$/;"	m	struct:log_if
 level_flag	.\evbase\log.h	/^    uint8_t level_flag;$/;"	m	struct:log_if
+lock	.\Debug\headers\evbase\thread.h	/^    int (*lock)(void *, int);$/;"	m	struct:lock_ops
 lock	.\evbase\thread.h	/^    int (*lock)(void *, int);$/;"	m	struct:lock_ops
-lock_alloc	.\evbase\thread.h	52;"	d
-lock_alloc_attr	.\evbase\thread.h	41;"	d
-lock_free	.\evbase\thread.h	53;"	d
-lock_free_attr	.\evbase\thread.h	43;"	d
-lock_lock	.\evbase\thread.h	50;"	d
-lock_lock_attr	.\evbase\thread.h	45;"	d
+lock_alloc	.\Debug\headers\evbase\thread.h	54;"	d
+lock_alloc	.\evbase\thread.h	54;"	d
+lock_alloc_attr	.\Debug\headers\evbase\thread.h	43;"	d
+lock_alloc_attr	.\evbase\thread.h	43;"	d
+lock_free	.\Debug\headers\evbase\thread.h	55;"	d
+lock_free	.\evbase\thread.h	55;"	d
+lock_free_attr	.\Debug\headers\evbase\thread.h	45;"	d
+lock_free_attr	.\evbase\thread.h	45;"	d
+lock_lock	.\Debug\headers\evbase\thread.h	52;"	d
+lock_lock	.\evbase\thread.h	52;"	d
+lock_lock_attr	.\Debug\headers\evbase\thread.h	47;"	d
+lock_lock_attr	.\evbase\thread.h	47;"	d
+lock_ops	.\Debug\headers\evbase\thread.h	/^struct lock_ops {$/;"	s
 lock_ops	.\evbase\thread.h	/^struct lock_ops {$/;"	s
+lock_t	.\Debug\headers\evbase\thread.h	/^typedef void* lock_t;$/;"	t
 lock_t	.\evbase\thread.h	/^typedef void* lock_t;$/;"	t
-lock_unlock	.\evbase\thread.h	51;"	d
-lock_unlock_attr	.\evbase\thread.h	47;"	d
+lock_unlock	.\Debug\headers\evbase\thread.h	53;"	d
+lock_unlock	.\evbase\thread.h	53;"	d
+lock_unlock_attr	.\Debug\headers\evbase\thread.h	49;"	d
+lock_unlock_attr	.\evbase\thread.h	49;"	d
+lockname	.\Debug\headers\evbase\thread.h	/^    const char* lockname;$/;"	m	struct:lock_ops
 lockname	.\evbase\thread.h	/^    const char* lockname;$/;"	m	struct:lock_ops
 log_append	.\evbase\log.c	/^void log_append(struct log_if *logif, uint8_t level_index, const char *fmt, ...) {$/;"	f
 log_console_fatal_cb	.\evbase\log.c	/^static void log_console_fatal_cb() {$/;"	f	file:
 log_console_flush_cb	.\evbase\log.c	/^static void log_console_flush_cb() {$/;"	f	file:
 log_console_output_cb	.\evbase\log.c	/^static void log_console_output_cb(const char *str, size_t size) {$/;"	f	file:
+log_debug	.\Debug\headers\evbase\log.h	71;"	d
 log_debug	.\evbase\log.h	71;"	d
+log_error	.\Debug\headers\evbase\log.h	73;"	d
 log_error	.\evbase\log.h	73;"	d
+log_fatal	.\Debug\headers\evbase\log.h	74;"	d
 log_fatal	.\evbase\log.h	74;"	d
+log_file_fatal_cb	.\evnet\filelog.c	/^static void log_file_fatal_cb() {$/;"	f	file:
+log_file_flush_cb	.\evnet\filelog.c	/^static void log_file_flush_cb() {$/;"	f	file:
+log_file_output_cb	.\evnet\filelog.c	/^static void log_file_output_cb(const char *cont, size_t len) {$/;"	f	file:
+log_if	.\Debug\headers\evbase\log.h	/^struct log_if {$/;"	s
 log_if	.\evbase\log.h	/^struct log_if {$/;"	s
+log_inner	.\Debug\headers\evbase\log.h	69;"	d
 log_inner	.\evbase\log.h	69;"	d
+log_level_append	.\Debug\headers\evbase\log.h	40;"	d
 log_level_append	.\evbase\log.h	40;"	d
 log_level_name	.\evbase\log.c	/^static const char* log_level_name[LOG_LEVELS] = {$/;"	v	file:
+log_trace	.\Debug\headers\evbase\log.h	70;"	d
 log_trace	.\evbase\log.h	70;"	d
+log_warn	.\Debug\headers\evbase\log.h	72;"	d
 log_warn	.\evbase\log.h	72;"	d
+logu_debug	.\Debug\headers\evbase\log.h	53;"	d
 logu_debug	.\evbase\log.h	53;"	d
+logu_error	.\Debug\headers\evbase\log.h	55;"	d
 logu_error	.\evbase\log.h	55;"	d
+logu_fatal	.\Debug\headers\evbase\log.h	56;"	d
 logu_fatal	.\evbase\log.h	56;"	d
+logu_inner	.\Debug\headers\evbase\log.h	51;"	d
 logu_inner	.\evbase\log.h	51;"	d
+logu_trace	.\Debug\headers\evbase\log.h	52;"	d
 logu_trace	.\evbase\log.h	52;"	d
+logu_warn	.\Debug\headers\evbase\log.h	54;"	d
 logu_warn	.\evbase\log.h	54;"	d
+loop	.\Debug\headers\evbase\evt.h	/^    EL_P *loop;$/;"	m	struct:evt_pool
 loop	.\evbase\evt.h	/^    EL_P *loop;$/;"	m	struct:evt_pool
-loop_list	.\evnet\tcpsv.h	/^    EL_P *loop_list;$/;"	m	struct:tcp_srv
+loop_on	.\Debug\headers\evnet\tcpsv.h	/^    EL_P loop_on;$/;"	m	struct:tcp_clt
+loop_on	.\Debug\headers\evnet\tcpsv.h	/^    EL_P loop_on;$/;"	m	struct:tcp_srv
+loop_on	.\Debug\headers\evnet\udpsv.h	/^    EL_P loop_on;$/;"	m	struct:udp_srv
 loop_on	.\evnet\tcpsv.h	/^    EL_P loop_on;$/;"	m	struct:tcp_clt
 loop_on	.\evnet\tcpsv.h	/^    EL_P loop_on;$/;"	m	struct:tcp_srv
 loop_on	.\evnet\udpsv.h	/^    EL_P loop_on;$/;"	m	struct:udp_srv
+loops	.\Debug\headers\evbase\evt.h	/^    int loops;$/;"	m	struct:evt_pool
+loops	.\Debug\headers\evnet\tcpsv.h	/^    int loops;$/;"	m	struct:tcp_srv
 loops	.\evbase\evt.h	/^    int loops;$/;"	m	struct:evt_pool
 loops	.\evnet\tcpsv.h	/^    int loops;$/;"	m	struct:tcp_srv
-main	.\main.c	/^int main (int argc, char *argv[]) {$/;"	f
+max	.\Debug\headers\evbase\util.h	46;"	d
 max	.\evbase\util.h	46;"	d
+max_free	.\evnet\filelog.c	/^int max_free = 0;$/;"	v
+max_full	.\evnet\filelog.c	/^int max_full = 0;$/;"	v
+min	.\Debug\headers\evbase\util.h	45;"	d
 min	.\evbase\util.h	45;"	d
 mm_free	.\evbase\util.c	/^void mm_free(void *p) {$/;"	f
+mm_malloc	.\Debug\headers\evbase\util.h	27;"	d
 mm_malloc	.\evbase\util.h	27;"	d
 mm_realloc	.\evbase\util.c	/^void *mm_realloc(void *p, int size) {$/;"	f
+multi_two	.\Debug\headers\evbase\util.h	30;"	d
 multi_two	.\evbase\util.h	30;"	d
+name	.\Debug\headers\evnet\tcpsv.h	/^    char name[10];$/;"	m	struct:tcp_srv
+name	.\Debug\headers\evnet\udpsv.h	/^    char name[10];$/;"	m	struct:udp_srv
 name	.\evnet\tcpsv.h	/^    char name[10];$/;"	m	struct:tcp_srv
 name	.\evnet\udpsv.h	/^    char name[10];$/;"	m	struct:udp_srv
+nevent	.\Debug\headers\evbase\epoll.h	/^    int nevent;$/;"	m	struct:evt_epoll
 nevent	.\evbase\epoll.h	/^    int nevent;$/;"	m	struct:evt_epoll
 now_to_string	.\evbase\util.c	/^void now_to_string(char* buf, int len) {$/;"	f
+on_accept_comp	.\Debug\headers\evnet\tcpsv.h	/^    void (*on_accept_comp)(TCPCLT_P);$/;"	m	struct:tcp_srv
 on_accept_comp	.\evnet\tcpsv.h	/^    void (*on_accept_comp)(TCPCLT_P);$/;"	m	struct:tcp_srv
-on_accept_comp	.\main.c	/^void on_accept_comp(TCPCLT_P client) {$/;"	f
-on_close_comp	.\evnet\tcpsv.h	/^    void (*on_close_comp)(int);$/;"	m	struct:tcp_srv
+on_client_close	.\Debug\headers\evnet\tcpsv.h	/^    void (*on_client_close)(TCPCLT_P);$/;"	m	struct:tcp_srv
+on_client_close	.\evnet\tcpsv.h	/^    void (*on_client_close)(TCPCLT_P);$/;"	m	struct:tcp_srv
+on_read	.\Debug\headers\evnet\udpsv.h	/^    void (*on_read)(UDPSRV_P, SA_P, const char*, int);$/;"	m	struct:udp_srv
 on_read	.\evnet\udpsv.h	/^    void (*on_read)(UDPSRV_P, SA_P, const char*, int);$/;"	m	struct:udp_srv
+on_read_comp	.\Debug\headers\evnet\tcpsv.h	/^    void (*on_read_comp)(TCPCLT_P, BUF_P, int);$/;"	m	struct:tcp_srv
 on_read_comp	.\evnet\tcpsv.h	/^    void (*on_read_comp)(TCPCLT_P, BUF_P, int);$/;"	m	struct:tcp_srv
-on_read_comp	.\main.c	/^void on_read_comp(TCPCLT_P client, BUF_P buf, int len) {$/;"	f
-on_udp_read	.\main.c	/^void on_udp_read(UDPSRV_P server, SA_P addr, const char* cont, int len) {$/;"	f
+on_read_comp	.\evplug\http.c	/^static void on_read_comp(TCPCLT_P client, BUF_P buf, int rlen) {$/;"	f	file:
+on_write_comp	.\Debug\headers\evnet\tcpsv.h	/^    void (*on_write_comp)(TCPCLT_P, BUF_P, int);$/;"	m	struct:tcp_srv
 on_write_comp	.\evnet\tcpsv.h	/^    void (*on_write_comp)(TCPCLT_P, BUF_P, int);$/;"	m	struct:tcp_srv
-on_write_comp	.\main.c	/^void on_write_comp(TCPCLT_P client, BUF_P buf , int len) {$/;"	f
+outbuf	.\Debug\headers\evnet\tcpsv.h	/^    BUF_P outbuf;$/;"	m	struct:tcp_clt
 outbuf	.\evnet\tcpsv.h	/^    BUF_P outbuf;$/;"	m	struct:tcp_clt
+output_cb	.\Debug\headers\evbase\log.h	/^    void (*output_cb)(const char*, size_t);$/;"	m	struct:log_if
 output_cb	.\evbase\log.h	/^    void (*output_cb)(const char*, size_t);$/;"	m	struct:log_if
+owner_thread	.\Debug\headers\evbase\evt.h	/^    int owner_thread;$/;"	m	struct:evt_loop
 owner_thread	.\evbase\evt.h	/^    int owner_thread;$/;"	m	struct:evt_loop
+pending	.\Debug\headers\evbase\evt.h	/^    EB_P *pending[LOOP_PRIORITY_MAX];$/;"	m	struct:evt_loop
 pending	.\evbase\evt.h	/^    EB_P *pending[LOOP_PRIORITY_MAX];$/;"	m	struct:evt_loop
+pending_cnt	.\Debug\headers\evbase\evt.h	/^    int pending_cnt[LOOP_PRIORITY_MAX];$/;"	m	struct:evt_loop
 pending_cnt	.\evbase\evt.h	/^    int pending_cnt[LOOP_PRIORITY_MAX];$/;"	m	struct:evt_loop
+pending_size	.\Debug\headers\evbase\evt.h	/^    int pending_size[LOOP_PRIORITY_MAX];$/;"	m	struct:evt_loop
 pending_size	.\evbase\evt.h	/^    int pending_size[LOOP_PRIORITY_MAX];$/;"	m	struct:evt_loop
+pid	.\Debug\headers\evnet\filelog.h	/^    pthread_t pid;$/;"	m	struct:async_filelog
+pid	.\evnet\filelog.h	/^    pthread_t pid;$/;"	m	struct:async_filelog
+poll_destroy	.\Debug\headers\evbase\evt.h	/^    void (*poll_destroy)(EL_P);$/;"	m	struct:evt_loop
 poll_destroy	.\evbase\evt.h	/^    void (*poll_destroy)(EL_P);$/;"	m	struct:evt_loop
+poll_dispatch	.\Debug\headers\evbase\evt.h	/^    int (*poll_dispatch)(EL_P);$/;"	m	struct:evt_loop
 poll_dispatch	.\evbase\evt.h	/^    int (*poll_dispatch)(EL_P);$/;"	m	struct:evt_loop
+poll_feature	.\Debug\headers\evbase\evt.h	/^    int poll_feature;$/;"	m	struct:evt_loop
 poll_feature	.\evbase\evt.h	/^    int poll_feature;$/;"	m	struct:evt_loop
+poll_init	.\Debug\headers\evbase\evt.h	/^    void *(*poll_init)(EL_P);$/;"	m	struct:evt_loop
 poll_init	.\evbase\evt.h	/^    void *(*poll_init)(EL_P);$/;"	m	struct:evt_loop
+poll_more_ptr	.\Debug\headers\evbase\evt.h	/^    void *poll_more_ptr;$/;"	m	struct:evt_loop
 poll_more_ptr	.\evbase\evt.h	/^    void *poll_more_ptr;$/;"	m	struct:evt_loop
+poll_time_us	.\Debug\headers\evbase\evt.h	/^    int64_t poll_time_us;      \/*in microsecond*\/$/;"	m	struct:evt_loop
 poll_time_us	.\evbase\evt.h	/^    int64_t poll_time_us;      \/*in microsecond*\/$/;"	m	struct:evt_loop
+poll_update	.\Debug\headers\evbase\evt.h	/^    int (*poll_update)(EL_P, int, uint8_t, uint8_t);$/;"	m	struct:evt_loop
 poll_update	.\evbase\evt.h	/^    int (*poll_update)(EL_P, int, uint8_t, uint8_t);$/;"	m	struct:evt_loop
+pool_on	.\Debug\headers\evnet\tcpsv.h	/^    EP_P pool_on;$/;"	m	struct:tcp_srv
+pool_on	.\evnet\tcpsv.h	/^    EP_P pool_on;$/;"	m	struct:tcp_srv
+pre_loop	.\Debug\headers\evbase\evt.h	/^    int pre_loop;$/;"	m	struct:evt_pool
+pre_loop	.\evbase\evt.h	/^    int pre_loop;$/;"	m	struct:evt_pool
+priority_max	.\Debug\headers\evbase\evt.h	/^    uint8_t priority_max;   \/* 0 ~ max*\/$/;"	m	struct:evt_loop
 priority_max	.\evbase\evt.h	/^    uint8_t priority_max;   \/* 0 ~ max*\/$/;"	m	struct:evt_loop
 pthread_cond_lock_alloc	.\evbase\thread.c	/^static void *pthread_cond_lock_alloc(int mode) {$/;"	f	file:
-pthread_cond_lock_free	.\evbase\thread.c	/^static void pthread_cond_lock_free(void *p, int mode) {$/;"	f	file:
+pthread_cond_lock_mm_free	.\evbase\thread.c	/^static void pthread_cond_lock_mm_free(void *p, int mode) {$/;"	f	file:
 pthread_cond_lock_signal	.\evbase\thread.c	/^static int pthread_cond_lock_signal(void *p, int mode) {$/;"	f	file:
-pthread_cond_lock_wait	.\evbase\thread.c	/^static int pthread_cond_lock_wait(void *p, void *k, const struct timeval *timeout, int mode) {$/;"	f	file:
+pthread_cond_lock_wait	.\evbase\thread.c	/^static int pthread_cond_lock_wait(void *p, void *k, int64_t time_us, int mode) {$/;"	f	file:
 pthread_mutex_lock_alloc	.\evbase\thread.c	/^static void *pthread_mutex_lock_alloc(int mode) {$/;"	f	file:
-pthread_mutex_lock_free	.\evbase\thread.c	/^static void pthread_mutex_lock_free(void *p, int mode) {$/;"	f	file:
 pthread_mutex_lock_lock	.\evbase\thread.c	/^static int pthread_mutex_lock_lock(void *p, int mode) {$/;"	f	file:
+pthread_mutex_lock_mm_free	.\evbase\thread.c	/^static void pthread_mutex_lock_mm_free(void *p, int mode) {$/;"	f	file:
 pthread_mutex_lock_unlock	.\evbase\thread.c	/^static int pthread_mutex_lock_unlock(void *p, int mode) {$/;"	f	file:
+quit_cond	.\Debug\headers\evbase\evt.h	/^    cond_t quit_cond;$/;"	m	struct:evt_loop
+quit_cond	.\evbase\evt.h	/^    cond_t quit_cond;$/;"	m	struct:evt_loop
+quit_lock	.\Debug\headers\evbase\evt.h	/^    lock_t quit_lock;$/;"	m	struct:evt_loop
+quit_lock	.\evbase\evt.h	/^    lock_t quit_lock;$/;"	m	struct:evt_loop
+r_ind	.\Debug\headers\evnet\buffer.h	/^    int r_ind;$/;"	m	struct:buffer
 r_ind	.\evnet\buffer.h	/^    int r_ind;$/;"	m	struct:buffer
+relate_srv	.\Debug\headers\evnet\tcpsv.h	/^    TCPSRV_P relate_srv;$/;"	m	struct:tcp_clt
 relate_srv	.\evnet\tcpsv.h	/^    TCPSRV_P relate_srv;$/;"	m	struct:tcp_clt
+repeat	.\Debug\headers\evbase\evt.h	/^    int64_t repeat;$/;"	m	struct:evt_timer
 repeat	.\evbase\evt.h	/^    int64_t repeat;$/;"	m	struct:evt_timer
+resp	.\evplug\http.c	/^char resp[]={"\\$/;"	v
+resplen	.\evplug\http.c	/^int resplen;$/;"	v
+revents	.\Debug\headers\evbase\evt.h	/^    uint8_t revents;   \/* event return by poll*\/$/;"	m	struct:fd_info
 revents	.\evbase\evt.h	/^    uint8_t revents;   \/* event return by poll*\/$/;"	m	struct:fd_info
+run_cond	.\Debug\headers\evbase\evt.h	/^    cond_t run_cond;$/;"	m	struct:evt_pool
+run_cond	.\evbase\evt.h	/^    cond_t run_cond;$/;"	m	struct:evt_pool
+run_lock	.\Debug\headers\evbase\evt.h	/^    lock_t run_lock;$/;"	m	struct:evt_pool
+run_lock	.\evbase\evt.h	/^    lock_t run_lock;$/;"	m	struct:evt_pool
+runs	.\Debug\headers\evbase\evt.h	/^    int runs;$/;"	m	struct:evt_pool
+runs	.\evbase\evt.h	/^    int runs;$/;"	m	struct:evt_pool
 scnet_cond_ops	.\evbase\thread.c	/^struct cond_ops scnet_cond_ops = {$/;"	v	typeref:struct:cond_ops
 scnet_lock_ops	.\evbase\thread.c	/^struct lock_ops scnet_lock_ops = {$/;"	v	typeref:struct:lock_ops
 set_cond_ops	.\evbase\thread.c	/^void set_cond_ops(struct cond_ops ops) {$/;"	f
+set_default_logif_flush_cb	.\Debug\headers\evbase\log.h	66;"	d
 set_default_logif_flush_cb	.\evbase\log.h	66;"	d
+set_default_logif_level	.\Debug\headers\evbase\log.h	62;"	d
 set_default_logif_level	.\evbase\log.h	62;"	d
+set_default_logif_level_cb	.\Debug\headers\evbase\log.h	67;"	d
 set_default_logif_level_cb	.\evbase\log.h	67;"	d
+set_default_logif_level_flag	.\Debug\headers\evbase\log.h	64;"	d
 set_default_logif_level_flag	.\evbase\log.h	64;"	d
+set_default_logif_output_cb	.\Debug\headers\evbase\log.h	65;"	d
 set_default_logif_output_cb	.\evbase\log.h	65;"	d
 set_lock_ops	.\evbase\thread.c	/^void set_lock_ops(struct lock_ops ops) {$/;"	f
+set_logif_flush_cb	.\Debug\headers\evbase\log.h	48;"	d
 set_logif_flush_cb	.\evbase\log.h	48;"	d
+set_logif_level	.\Debug\headers\evbase\log.h	44;"	d
 set_logif_level	.\evbase\log.h	44;"	d
+set_logif_level_cb	.\Debug\headers\evbase\log.h	49;"	d
 set_logif_level_cb	.\evbase\log.h	49;"	d
+set_logif_level_flag	.\Debug\headers\evbase\log.h	46;"	d
 set_logif_level_flag	.\evbase\log.h	46;"	d
+set_logif_output_cb	.\Debug\headers\evbase\log.h	47;"	d
 set_logif_output_cb	.\evbase\log.h	47;"	d
+signal	.\Debug\headers\evbase\thread.h	/^    int (*signal)(void *cond, int);$/;"	m	struct:cond_ops
 signal	.\evbase\thread.h	/^    int (*signal)(void *cond, int);$/;"	m	struct:cond_ops
+size	.\Debug\headers\evnet\buffer.h	/^    int size;$/;"	m	struct:buffer
 size	.\evnet\buffer.h	/^    int size;$/;"	m	struct:buffer
+srv_io	.\Debug\headers\evnet\tcpsv.h	/^    struct evt_io* srv_io;$/;"	m	struct:tcp_srv	typeref:struct:tcp_srv::evt_io
+srv_io	.\Debug\headers\evnet\udpsv.h	/^    struct evt_io* srv_io;$/;"	m	struct:udp_srv	typeref:struct:udp_srv::evt_io
 srv_io	.\evnet\tcpsv.h	/^    struct evt_io* srv_io;$/;"	m	struct:tcp_srv	typeref:struct:tcp_srv::evt_io
 srv_io	.\evnet\udpsv.h	/^    struct evt_io* srv_io;$/;"	m	struct:udp_srv	typeref:struct:udp_srv::evt_io
+status	.\Debug\headers\evbase\evt.h	/^    int status;$/;"	m	struct:evt_pool
+status	.\Debug\headers\evbase\evt.h	/^    uint8_t status;$/;"	m	struct:evt_loop
+status	.\Debug\headers\evnet\filelog.h	/^    uint8_t status;$/;"	m	struct:async_filelog
+status	.\evbase\evt.h	/^    int status;$/;"	m	struct:evt_pool
 status	.\evbase\evt.h	/^    uint8_t status;$/;"	m	struct:evt_loop
+status	.\evnet\filelog.h	/^    uint8_t status;$/;"	m	struct:async_filelog
 tcp_buffer_send	.\evnet\tcpsv.c	/^int tcp_buffer_send(TCPCLT_P client, BUF_P buf) {$/;"	f
 tcp_client_close	.\evnet\tcpsv.c	/^static void tcp_client_close(TCPCLT_P client) {$/;"	f	file:
 tcp_client_read	.\evnet\tcpsv.c	/^static void tcp_client_read(EL_P loop, struct evt_io* ev) {$/;"	f	file:
 tcp_client_write	.\evnet\tcpsv.c	/^static void tcp_client_write(EL_P loop, struct evt_io* ev) {$/;"	f	file:
+tcp_clt	.\Debug\headers\evnet\tcpsv.h	/^struct tcp_clt {$/;"	s
 tcp_clt	.\evnet\tcpsv.h	/^struct tcp_clt {$/;"	s
 tcp_delay_send	.\evnet\tcpsv.c	/^int tcp_delay_send(TCPCLT_P client, const char* str, int size, int mask) {$/;"	f
 tcp_flush	.\evnet\tcpsv.c	/^int tcp_flush(TCPCLT_P client) {$/;"	f
 tcp_send	.\evnet\tcpsv.c	/^int tcp_send(TCPCLT_P client, const char* str, int size) {$/;"	f
 tcp_server_accpet	.\evnet\tcpsv.c	/^static void tcp_server_accpet(EL_P loop, struct evt_io* ev) {$/;"	f	file:
 tcp_server_bind_loop	.\evnet\tcpsv.c	/^int tcp_server_bind_loop(TCPSRV_P server, EL_P loop) {$/;"	f
+tcp_server_bind_pool	.\evnet\tcpsv.c	/^int tcp_server_bind_pool(TCPSRV_P server, EP_P pool) {$/;"	f
 tcp_server_free	.\evnet\tcpsv.c	/^void tcp_server_free(TCPSRV_P server) {$/;"	f
 tcp_server_init	.\evnet\tcpsv.c	/^TCPSRV_P tcp_server_init(int port, int flag) {$/;"	f
 tcp_server_init_v1	.\evnet\tcpsv.c	/^TCPSRV_P tcp_server_init_v1(const char* addr_str, int port, int flag) {$/;"	f
 tcp_server_init_v2	.\evnet\tcpsv.c	/^TCPSRV_P tcp_server_init_v2(SA *addr, int flag) {$/;"	f
-tcp_set_accept_comp_cb	.\evnet\tcpsv.h	52;"	d
-tcp_set_close_comp_cb	.\evnet\tcpsv.h	58;"	d
-tcp_set_read_comp_cb	.\evnet\tcpsv.h	54;"	d
-tcp_set_write_comp_cb	.\evnet\tcpsv.h	56;"	d
+tcp_set_accept_comp_cb	.\Debug\headers\evnet\tcpsv.h	55;"	d
+tcp_set_accept_comp_cb	.\evnet\tcpsv.h	55;"	d
+tcp_set_clidata	.\evnet\tcpsv.c	/^int tcp_set_clidata(TCPCLT_P client, void* data) {$/;"	f
+tcp_set_client_close_cb	.\Debug\headers\evnet\tcpsv.h	61;"	d
+tcp_set_client_close_cb	.\evnet\tcpsv.h	61;"	d
+tcp_set_next_loop_cb	.\Debug\headers\evnet\tcpsv.h	63;"	d
+tcp_set_next_loop_cb	.\evnet\tcpsv.h	63;"	d
+tcp_set_read_comp_cb	.\Debug\headers\evnet\tcpsv.h	57;"	d
+tcp_set_read_comp_cb	.\evnet\tcpsv.h	57;"	d
+tcp_set_srvdata	.\evnet\tcpsv.c	/^int tcp_set_srvdata(TCPSRV_P server, void* data) {$/;"	f
+tcp_set_write_comp_cb	.\Debug\headers\evnet\tcpsv.h	59;"	d
+tcp_set_write_comp_cb	.\evnet\tcpsv.h	59;"	d
+tcp_srv	.\Debug\headers\evnet\tcpsv.h	/^struct tcp_srv {$/;"	s
 tcp_srv	.\evnet\tcpsv.h	/^struct tcp_srv {$/;"	s
-thread_detach	.\evbase\thread.h	94;"	d
+temp	.\Debug\headers\evbase\util.h	/^    uint8_t temp;$/;"	m	struct:event_param
+temp	.\evbase\util.h	/^    uint8_t temp;$/;"	m	struct:event_param
+thread_detach	.\Debug\headers\evbase\thread.h	96;"	d
+thread_detach	.\evbase\thread.h	96;"	d
 thread_id	.\evbase\thread.c	/^int thread_id() {$/;"	f
-thread_join	.\evbase\thread.h	93;"	d
+thread_join	.\Debug\headers\evbase\thread.h	95;"	d
+thread_join	.\evbase\thread.h	95;"	d
 thread_name	.\evbase\thread.c	/^const char* thread_name() {$/;"	f
-thread_start	.\evbase\thread.h	92;"	d
-thread_t	.\evbase\thread.h	89;"	d
+thread_start	.\Debug\headers\evbase\thread.h	94;"	d
+thread_start	.\evbase\thread.h	94;"	d
+thread_t	.\Debug\headers\evbase\thread.h	91;"	d
+thread_t	.\evbase\thread.h	91;"	d
 time_to_string	.\evbase\util.c	/^void time_to_string(int64_t micro_seconds, char* buf, int len) {$/;"	f
+timer_heap	.\Debug\headers\evbase\evt.h	/^    struct evt_timer** timer_heap;$/;"	m	struct:evt_loop	typeref:struct:evt_loop::evt_timer
 timer_heap	.\evbase\evt.h	/^    struct evt_timer** timer_heap;$/;"	m	struct:evt_loop	typeref:struct:evt_loop::evt_timer
+timer_heap_cnt	.\Debug\headers\evbase\evt.h	/^    int timer_heap_cnt;$/;"	m	struct:evt_loop
 timer_heap_cnt	.\evbase\evt.h	/^    int timer_heap_cnt;$/;"	m	struct:evt_loop
+timer_heap_size	.\Debug\headers\evbase\evt.h	/^    int timer_heap_size;$/;"	m	struct:evt_loop
 timer_heap_size	.\evbase\evt.h	/^    int timer_heap_size;$/;"	m	struct:evt_loop
+timestamp	.\Debug\headers\evbase\evt.h	/^    int64_t timestamp;$/;"	m	struct:evt_timer
 timestamp	.\evbase\evt.h	/^    int64_t timestamp;$/;"	m	struct:evt_timer
+type	.\Debug\headers\evbase\util.h	/^    uint8_t type;$/;"	m	struct:event_param
+type	.\evbase\util.h	/^    uint8_t type;$/;"	m	struct:event_param
 udp_send	.\evnet\udpsv.c	/^void udp_send(UDPSRV_P server, SA_P addr, const char* cont, int len) {$/;"	f
 udp_server_bind_loop	.\evnet\udpsv.c	/^int udp_server_bind_loop(UDPSRV_P server, EL_P loop) {$/;"	f
+udp_server_bind_pool	.\evnet\udpsv.c	/^int udp_server_bind_pool(UDPSRV_P server, EP_P pool) {$/;"	f
 udp_server_free	.\evnet\udpsv.c	/^UDPSRV_P udp_server_free(UDPSRV_P server) {$/;"	f
 udp_server_init	.\evnet\udpsv.c	/^UDPSRV_P udp_server_init(int port, int flag) {$/;"	f
 udp_server_init_v1	.\evnet\udpsv.c	/^UDPSRV_P udp_server_init_v1(const char* s_addr, int port, int flag) {$/;"	f
 udp_server_init_v2	.\evnet\udpsv.c	/^UDPSRV_P udp_server_init_v2(SA* addr, int flag) {$/;"	f
 udp_server_read	.\evnet\udpsv.c	/^static void udp_server_read(EL_P loop, struct evt_io* ev) {$/;"	f	file:
-udp_set_read_cb	.\evnet\udpsv.h	36;"	d
+udp_set_read_cb	.\Debug\headers\evnet\udpsv.h	38;"	d
+udp_set_read_cb	.\evnet\udpsv.h	38;"	d
+udp_srv	.\Debug\headers\evnet\udpsv.h	/^struct udp_srv {$/;"	s
 udp_srv	.\evnet\udpsv.h	/^struct udp_srv {$/;"	s
+unlock	.\Debug\headers\evbase\thread.h	/^    int (*unlock)(void *, int);$/;"	m	struct:lock_ops
 unlock	.\evbase\thread.h	/^    int (*unlock)(void *, int);$/;"	m	struct:lock_ops
 update_cached_time	.\evbase\util.c	/^int64_t update_cached_time() {$/;"	f
+usingbuf	.\Debug\headers\evnet\filelog.h	/^    BUF_P usingbuf;$/;"	m	struct:async_filelog
+usingbuf	.\evnet\filelog.h	/^    BUF_P usingbuf;$/;"	m	struct:async_filelog
+w_ind	.\Debug\headers\evnet\buffer.h	/^    int w_ind;$/;"	m	struct:buffer
 w_ind	.\evnet\buffer.h	/^    int w_ind;$/;"	m	struct:buffer
+wait	.\Debug\headers\evbase\thread.h	/^    int (*wait)(void *cond, void *lock,$/;"	m	struct:cond_ops
 wait	.\evbase\thread.h	/^    int (*wait)(void *cond, void *lock,$/;"	m	struct:cond_ops
+wake_up_loop	.\evbase\evt.c	/^void wake_up_loop(EL_P loop) {$/;"	f
